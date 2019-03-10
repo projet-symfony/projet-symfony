@@ -1,0 +1,169 @@
+{%  extends "base.html.twig" %}
+
+{% block title  %}
+Nextipster
+{% endblock %}
+
+{%  block stylesheets %}
+        body {
+            background-color:#f1f1f1;
+        }
+        .ulMenu {
+
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .menu {
+            float: left;
+        }
+
+        .menu a {
+            display : block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+
+        }
+
+        .menu a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .leftLogin {
+            height:100%;
+            width:10%;
+            border: 1px solid black;
+            float:left;
+            margin-left:10%;
+            background-color:lightgray;
+        }
+
+
+        #slides{
+            height:10%;
+            max-width:100%;
+            border:solid 1px;
+            margin-left:20%;
+            border-left : none;
+            margin-right:14%;
+
+        }
+
+        .body {
+            margin-right:14%;
+            margin-left:20%;
+            height:89.5%;
+            border:solid 1px;
+            margin-bottom:50px;
+            background-color:white;
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        .ulMatch{
+            width:65%;
+            background-color:#f1f1f1;
+            margin-left:120px;
+            list-style-type: none;
+            padding: 0;
+            overflow: hidden;
+        }
+        .match{
+
+            height:30px;
+            border: solid 1px gray;
+            border-top : none;
+            font-family:calibri;
+
+        }
+
+        .match a{
+            display:block;
+            color:black;
+            text-align:center;
+            height:100%;
+
+        }
+
+        .match a:hover{
+            background-color:white;
+        }
+
+        .headerMatch {
+            border: solid 1px gray;
+            border-top-left-radius : 5px;
+            border-top-right-radius : 5px;
+            background-color:blue;
+            height:30px;
+            color:white;
+            text-align: center;
+            font-size:19px;
+            display:block;
+            font-weight:bold;
+            font-family: calibri;
+        }
+
+        .footer{
+            height:100px;
+            width:100%:
+            position:absolute;
+            bottom:0;
+            background-color:gray;
+        }
+
+{% endblock %}
+
+{%  block header %}
+
+
+    <div style="border:1px solid; width:100%; height:15%;">
+    <img src="" alt="banniere">
+    </div>
+
+    <ul class="ulMenu">
+        <li class="menu"> <a> Acceuil </a></li>
+        <li class="menu"> <a>Pronostics du jour </a> </li>
+        <li class="menu"> <a>Classement Pronostiqueurs</a></li>
+    </ul>
+
+    <div class = "leftLogin">
+        a
+    </div>
+
+
+        <div id="slides">
+            <img src="" alt="slides">
+        </div>
+
+{% endblock %}
+
+{%  block body %}
+
+    <div class="body">
+        <h2> Les matchs de la semaine </h2>
+        <ul class="ulMatch">
+            <li class="headerMatch"> Champions League </li>
+            <li class="match"> <a> Paris - Réal </a> </li>
+            <li class="match"> <a> Barça - Juventus </a> </li>
+        </ul>
+
+
+    </div>
+
+{% endblock %}
+
+{%  block footer %}
+
+    <div class="footer">
+        footer
+    </div>
+
+{% endblock %}
+
