@@ -5,34 +5,63 @@ Nextipster
 {% endblock %}
 
 {%  block stylesheets %}
-        body {
+    {{ parent() }}
+      {#  body {
             background-color:#f1f1f1;
         }
+
+
         .ulMenu {
 
             list-style-type: none;
             margin: 0;
             padding: 0;
-            overflow: hidden;
             background-color: #333;
+            overflow: hidden;
+
+        }
+
+        {# écrit par Aurelie #}
+       {# .ulMenu li:hover .sous-menu1{
+            display: inline-block;
+            top: 100%;
+            left: 0px;
+            z-index: 100000;
+        } #}
+        {# écrit par Aurelie #}
+        {#.sous-menu1{
+            list-style-type: none;
+            display: none;
+        } #}
+        {# écrit par Aurelie #}
+        {#.sous-menu1{
+            border-bottom: 1px solid;
+        } #}
+        {# écrit par Aurelie #}
+       {# .sous-menu1 li a{
+             padding: 15px 30px;
+             font-size: 13px;
+             color: #677899;
+             width: 270px;
         }
 
         .menu {
             float: left;
-        }
+            position: relative;
+        } #}
 
-        .menu a {
+       {# .menu a {
             display : block;
             color: white;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
 
-        }
+        }#}
 
-        .menu a:hover:not(.active) {
+       {# .menu a:hover:not(.active) {
             background-color: #111;
-        }
+        } #}
 
         .leftLogin {
             height:100%;
@@ -130,7 +159,15 @@ Nextipster
     <ul class="ulMenu">
         <li class="menu"> <a> Acceuil </a></li>
         <li class="menu"> <a>Pronostics du jour </a> </li>
-        <li class="menu"> <a>Classement Pronostiqueurs</a></li>
+
+        <!--Aurelie vient de changer Classement Pronostiqueurs en Classements pour pouvoir créer un sous-menu-->
+
+        <li class="menu"> <a>Classements</a>
+            <ul class="sous-menu1">
+                <li class="sous-menu"> <a href="{{ path('classementpronostiqueur') }}"> Classement Pronostiqueur </a> </li>
+                <li class="sous-menu"> <a href="{{ path('classementclub') }}"> Classement Club  </a> </li>
+            </ul>
+        </li>
     </ul>
 
     <div class = "leftLogin">
