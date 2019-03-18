@@ -5,196 +5,15 @@ Nextipster
 {% endblock %}
 
 {%  block stylesheets %}
-        body {
-            background-color:#f1f1f1;
-        }
-        .ulMenu {
-
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background-color: blue;
-        }
-
-        .menu {
-            float: left;
-        }
-
-        .menu a {
-            display : block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-family:Calibri;
-            letter-spacing:0.3px;
-            font-weight:bold;
-
-        }
-
-        .menu a:hover:not(.active) {
-            background-color: #777DD7;
-        }
-
-        .menu #first{
-            margin-left:130px;
-        }
-
-        .leftLogin {
-            height:100%;
-            width:15%;
-            border: 1px solid black;
-            float:left;
-            margin-left:10%;
-            background-color:lightgray;
-        }
-
-
-        #slides{
-            height:10%;
-            max-width:100%;
-            border:solid 1px;
-            margin-left:20%;
-            border-left : none;
-            margin-right:14%;
-
-        }
-
-        .body {
-            margin-right:14%;
-            margin-left:20%;
-            height:89.5%;
-            border:solid 1px;
-            margin-bottom:50px;
-            background-color:white;
-        }
-
-        h2{
-            text-align: center;
-            font-family:Calibri;
-            font-size:33px;
-            color:#54423F;
-        }
-
-        .separator{
-            height:0.1px;
-            color:lightgray;
-            width:80%;
-        }
-
-        .ulMatch{
-            width:65%;
-            background-color:#f1f1f1;
-            margin-left:120px;
-            list-style-type: none;
-            padding: 0;
-            overflow: hidden;
-            margin-left:200px;
-            margin-bottom:70px;
-        }
-        .match{
-
-            height:30px;
-            border: solid 1px gray;
-            border-top : none;
-            font-family:calibri;
-
-        }
-
-        .match a{
-            display:block;
-            color:#54423F;
-            height:100%;
-            background-color:white;
-        }
-
-        .match a:hover{
-            background-color:lightgray;
-        }
-
-
-        .time{
-            margin-left:20px;
-        }
-
-        .team{
-            margin-left:30%;
-        }
-
-        .nbavis{
-            margin-left:30%;
-            border : solid 1px transparent ;
-            background-color: darkgray;
-            border-radius:3px;
-            color:white;
-            font-family:Calibri;
-            position:relative;
-            top:5px;
-            padding : 2px;
-        }
-
-        .headerMatch {
-            border: solid 1px gray;
-            border-top-left-radius : 5px;
-            border-top-right-radius : 5px;
-            background-color:blue;
-            height:30px;
-            color:white;
-            text-align: center;
-            font-size:19px;
-            display:block;
-            font-weight:bold;
-            font-family: calibri;
-        }
-
-        .footer{
-            height:100px;
-            width:100%:
-            position:absolute;
-            bottom:0;
-            background-color:gray;
-            text-align:center;
-        }
-
-
-        .footer a{
-            margin-left:15px;
-            margin-right:15px;
-             text-decoration:underline;
-            color:white;
-        }
-
-{% endblock %}
-
-{%  block header %}
-
-
-    <div style="border:1px solid; width:100%; height:15%;">
-    <img src="../public/imgs/banner.jpg" alt="banniere">
-    </div>
-
-    <ul class="ulMenu">
-        <li class="menu"> <a id="first"> ACCEUIL </a></li>
-        <li class="menu"> <a>PRONOSTIC DU JOUR </a> </li>
-        <li class="menu"> <a> CLASSEMENT </a></li>
-        <li class="menu"> <a> HISTORIQUE </a></li>
-    </ul>
-
-    <div class = "leftLogin">
-        a
-    </div>
-
-
-        <div id="slides">
-            <img src="" alt="slides">
-        </div>
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/home.css') }}">
 {% endblock %}
 
 {%  block body %}
 
-    <div class="body">
+    <div id="slides">
+        <img src="" alt="slides">
+    </div>
+
         <h2> Matchs de la semaine </h2>
         <hr class="separator"> <br />
 
@@ -211,20 +30,7 @@ Nextipster
         </ul>
 
 
-    </div>
 
 {% endblock %}
 
-{%  block footer %}
-
-    <div class="footer">
-        <p>NextTipster</p>
-        <a>Qui sommes nous ?</a>
-        <a>Nous contacter</a>
-        <a>Plan du site</a>
-        <a>Mentions légales</a>
-        <a>FAQ</a>
-    </div>
-
-{% endblock %}
 

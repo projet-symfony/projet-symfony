@@ -2,12 +2,51 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <style> {% block stylesheets %}{% endblock %} </style>
+        <link rel="stylesheet" type="text/css" href="{{ asset('CSS/header.css') }}">
+         {% block stylesheets %}{% endblock %}
     </head>
+
     <body>
-        {%  block header %}{% endblock %}
+
+    <header>
+        <div id="banner">
+            <img src="banner.jpg" alt="banniere">
+        </div>
+
+        <ul class="ulMenu">
+            <li class="menu"> <a href="/" id="first"> ACCEUIL </a></li>
+            <li class="menu"> <a href="dayprono">PRONOSTIC DU JOUR </a> </li>
+            <li class="dropdown"> <a> CLASSEMENT </a>
+                <div class="dropdown-content">
+                    <a href="classement/pronostiqueur">Pronostiqueur</a>
+                    <a href="classement/equipe">Equipes</a>
+                </div>
+            </li>
+            <li class="menu"> <a href="historique"> HISTORIQUE </a></li>
+        </ul>
+
+    </header>
+
+    <div class = "leftLogin">
+        a
+    </div>
+
+    <div class="body">
         {% block body %}{% endblock %}
-        {% block footer %}{% endblock %}
+
+    </div>
+
+
+    <footer>
+        <p>NextTipster</p>
+        <a>Qui sommes nous ?</a>
+        <a>Nous contacter</a>
+        <a>Plan du site</a>
+        <a>Mentions légales</a>
+        <a>FAQ</a>
+    </footer>
+
     </body>
+
 </html>
 
