@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Classement
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    h1{
+    text-align: center;
+    }
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container mt-4">
+        <h1> Classement Actuel Des Clubs </h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th> Numéros </th>
+                <th> Clubs </th>
+                <th> Points </th>
+                <th> Joués </th>
+                <th> Gagnés </th>²
+                <th> Nuls </th>
+                <th> Perdus </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% set p = 0 %}
+            {% for c in clubs %}
+                {% set p = p + 1 %}
+                <tr>
+                    <td> {{ p }}</td>
+                    <td> {{ c.club }} </td>
+                    <td> {{ c.points }} </td>
+                    <td> {{ c.joue }} </td>
+                    <td> {{ c.gagne}} </td>
+                    <td> {{ c.nul}} </td>
+                    <td> {{ c.perdu}} </td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+

@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Classement
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    h1{
+    text-align: center;
+    }
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    <div class="container mt-4">
+        <h1> Classement Actuel Des Pronostiqueurs </h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th> Noms </th>
+                <th> NP </th>
+                <th> TR </th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for p in pronostiqueurs %}
+
+                <tr>
+                    <td> {{ p.Nom }}</td>
+                    <td> {{ p.nbrePronostiques }} </td>
+                    <td> {{ p.tauxReussite ~ "%" }} </td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
