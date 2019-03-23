@@ -1,0 +1,69 @@
+.leftLogin {
+    height:100%;
+    width:15%;
+    border: 1px solid black;
+    float:left;
+    margin-left:10%;
+    background-color:lightgray;
+    border-top:none;
+}
+
+h4{
+    text-align:center;
+    font-family:Candara;
+}
+
+.ulFirstUser{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ulFirstUser li{
+    border-top:solid 1px;
+    background-color:rgb(230,242,230);
+}
+
+.ulFirstUser li #nbUser{
+    font-size:22px;
+    margin-left:8%;
+    position:relative;
+    top:-16px;
+    font-family:Calibri;
+    margin-right:15px;
+
+}
+
+.ulFirstUser li img{
+    border:solid 1px black;
+    height:40px;
+    width:40px;
+    margin-top:2px;
+
+}
+
+.ulFirstUser li #nameUser{
+    position:relative;
+    top:-16px;
+}
+
+#FirstUser{
+     background-color:#F0C300;
+ }
+
+.BehindUser{
+    background-color:#CECECE;
+}
+
+#LastUser{
+   border-bottom:solid 1px;
+}
+
+.body{
+    margin-right:14%;
+    margin-left:20%;
+    height:100%;
+    border:solid 1px;
+    margin-bottom:50px;
+    background-color:white;
+}

@@ -1,0 +1,85 @@
+#slides{
+    height:20%;
+    max-width:100%;
+    border-bottom:solid 1px;
+
+
+}
+
+h2{
+    text-align: center;
+    font-family:Calibri;
+    font-size:33px;
+    color:#54423F;
+}
+
+.separator{
+    height:0.1px;
+    color:lightgray;
+    width:80%;
+}
+
+.ulMatch{
+    width:65%;
+    background-color:#f1f1f1;
+    margin-left:120px;
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    margin-left:200px;
+    margin-bottom:70px;
+}
+.match{
+
+    height:30px;
+    border: solid 1px gray;
+    border-top : none;
+    font-family:calibri;
+
+}
+
+.match a{
+    display:block;
+    color:#54423F;
+    height:100%;
+    background-color:white;
+}
+
+.match a:hover{
+    background-color:lightgray;
+}
+
+
+.time{
+    margin-left:20px;
+}
+
+.team{
+    margin-left:30%;
+}
+
+.nbavis{
+    margin-left:30%;
+    border : solid 1px transparent ;
+    background-color: darkgray;
+    border-radius:3px;
+    color:white;
+    font-family:Calibri;
+    position:relative;
+    top:5px;
+    padding : 2px;
+}
+
+.headerMatch {
+    border: solid 1px gray;
+    border-top-left-radius : 5px;
+    border-top-right-radius : 5px;
+    background-color:blue;
+    height:30px;
+    color:white;
+    text-align: center;
+    font-size:19px;
+    display:block;
+    font-weight:bold;
+    font-family: calibri;
+}
