@@ -6,9 +6,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    h1{
-    text-align: center;
-    }
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/classement.css') }}">
 {% endblock %}
 
 {% block header %}
@@ -21,7 +19,7 @@
         <h1> Classement Actuel Des Clubs </h1>
         <table class="table table-striped">
             <thead>
-            <tr>
+            <tr class="entete">
                 <th> Numéros </th>
                 <th> Clubs </th>
                 <th> Points </th>
