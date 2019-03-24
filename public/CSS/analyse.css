@@ -55,7 +55,6 @@ li .result .activeButton{
     margin-right:15%;
     box-shadow: 0.5px 0.5px  1px 1px blue;
 }
-
 li .cote{
     margin-left:26%;
     margin-bottom:10px;
@@ -71,4 +70,64 @@ li .cote .activeCote{
     font-weight:bold;
     margin-right:19%;
 }
+body .stade{
 
+    list-style-type: none;
+    position:relative;
+    left:20%;
+    width:50%;
+    background-color:#BABDF9;
+    padding: 20px;
+    overflow: hidden;
+
+
+}
+h3{
+    text-align: center;
+    font-family:Calibri;
+    font-size:25px;
+    color:#54423F;
+    margin-bottom:20px;
+}
+
+#team1, th, td{
+
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#team2, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th,td{
+padding: 15px;
+text-align: center;}
+
+#face, th, td{
+
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#team1{
+    display: inline-block;
+}
+#team2{
+        float: right;
+}
+body .Forme{
+    position:relative;
+    padding-left: 150px;
+    padding-right: 150px;
+    overflow: hidden;
+
+}
+.face{
+    position:relative;
+    padding-left: 325px;
+    overflow: hidden; }
+.Statistique{
+    position:relative;
+    padding-left: 250px;
+    padding-right: 250px;
+    overflow: hidden;
+}
