@@ -8,30 +8,42 @@
 
 namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\User;
+use App\Form\UserType;
+use App\Repository\UserRepository;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/")
      */
-    public function homepage(){
-        return $this->render('home.html.twig');
+    public function homepage(Request $request, ObjectManager $objectManager){
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $objectManager = $this->getDoctrine()->getManager();
+            $objectManager->persist($user);
+            $objectManager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+        return $this->render('home.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
-     * @Route("/article/{slug}")
+     * @Route("/{slug}")
      */
-    public function readAll($slug){
-
-        var_dump($slug);
-        return new Response('For All Article');
-    }
-
 
     public function read($slug){
-        return $this->render('article/read.html.twig');
+        return $this->render('home.html.twig');
     }
 
 }
