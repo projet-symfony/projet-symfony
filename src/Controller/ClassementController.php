@@ -10,10 +10,13 @@ namespace App\Controller;
 
 
 use App\Entity\Pronostiqueur;
+use App\Entity\RechercheClassement;
+use App\Form\RechercheClassementType;
 use App\Repository\ClassementClubRepository;
 use App\Repository\PronostiqueurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\ClassementClub;
@@ -33,7 +36,11 @@ class ClassementController extends AbstractController
      * @Route("/Classement/ClassementClub", name="classementclub")
      * @return Response
      */
-    public function indexClubs():Response{
+    public function indexClubs(Request $request):Response{
+
+        $recherche = new RechercheClassement();
+        $form = $this->createForm(RechercheClassementType::class, $recherche);
+        $form->handleRequest($request);
 
         /*$club1= new ClassementClub();
         $club1->setClub("Juventus")
@@ -61,8 +68,8 @@ class ClassementController extends AbstractController
 
 
         return $this->render('Classement/ClassementClub.html.twig', [
-            'clubs' => $clubs
-
+            'clubs' => $clubs,
+            'form' => $form->createView()
         ]);
     }
 

@@ -6,7 +6,7 @@ table {
     border-collapse: collapse;
     border-width:1px;
     border-style:solid;
-    border-color:black;
+    border-color:blue;
     width:80%;
     margin: auto;
 }
@@ -25,4 +25,14 @@ td ,th{
     border-style:solid;
     border-color:blue;
     width:50%;
+}
+
+.search{
+    padding-top: 20px;
+}
+.second{
+    padding-top: 22px;
+}
+.third{
+    padding-top: 24px;
 }

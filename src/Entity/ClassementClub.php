@@ -51,6 +51,16 @@ class ClassementClub
      */
     private $perdu;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $Ligue;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $pays;
+
     public function __Construct(){
         $this->numero = 0;
         $this->points = 0;
@@ -141,6 +151,30 @@ class ClassementClub
     public function setPerdu(int $perdu): self
     {
         $this->perdu = $perdu;
+
+        return $this;
+    }
+
+    public function getLigue(): ?int
+    {
+        return $this->Ligue;
+    }
+
+    public function setLigue(?int $Ligue): self
+    {
+        $this->Ligue = $Ligue;
+
+        return $this;
+    }
+
+    public function getPays(): ?string
+    {
+        return $this->pays;
+    }
+
+    public function setPays(?string $pays): self
+    {
+        $this->pays = $pays;
 
         return $this;
     }

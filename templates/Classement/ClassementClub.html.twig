@@ -15,6 +15,16 @@
 
 {% block body %}
     {{ parent() }}
+
+    <div class="search">
+
+        {{ form_start(form) }}
+        <div class="first">{{ form_row(form.pays) }}</div>
+        <div class="second"> {{ form_row(form.ligue) }}</div>
+        <div class="third"><input type="submit" value="Rechercher" /></div>
+        {{ form_end(form) }}
+
+    </div>
     <div class="container mt-4">
         <h1> Classement Actuel Des Clubs </h1>
         <table class="table table-striped">
