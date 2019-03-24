@@ -1,3 +1,6 @@
 index:
     path: /
     controller: App\Controller\HomeController::homepage
+analyse:
+    path: /Analyse/Analyse
+    controller: App\Controller\AnalyseController::analysePage
