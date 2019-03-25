@@ -30,14 +30,14 @@ class DaypronoController extends AbstractController
      * @Route("/dayprono")
      */
     public function homepage(){
-        $vote = new Vote();
-        $vote->setNbVote(3)
-            ->setIdMatch(2)
-            ->setVote1(100)
-            ->setVote2(100)
-            ->setVoteN(15);
-        $this->em->persist($vote);
-        $this->em->flush();
+      //  $vote = new Vote();
+      //  $vote->setNbVote(3)
+       //     ->setIdMatch(2)
+       //     ->setVote1(100)
+         //   ->setVote2(100)
+          //  ->setVoteN(15);
+       // $this->em->persist($vote);
+        //$this->em->flush();
         $votes = $this->repository->printAll();
             return $this->render('dayprono.html.twig', [
                 'vote' => $votes]);
