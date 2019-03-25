@@ -14,37 +14,35 @@
     <h2> Pronostic du jour </h2>
 
     <hr class="separator">
-
     <ul>
-        <li>
-            <p class="detailMatch"> 17:30 à Parc des princes</p>
-            <p class="teamMatch"> Paris Saint Germains - Olympique Lyonnais </p>
-            <div class="result">
-                <button class="activeButton"> 1 </button>
-                <button class="otherButton" disabled> N </button>
-                <button class="otherButton" disabled> 2 </button>
-            </div>
+    {% for v in Vote %}
 
-            <div class="cote">
-                <span class="activeCote">1.30</span>
-                <span class="otherCote">3.40</span>
-                <span class="otherCote">3.75</span> </div>
-        </li>
+                        <li>
+                            <p class="detailMatch"> m.datetime</p>
+                            <p class="teamMatch"> m.club1 - m.club2 </p>
+                            <div class="result">
+                                <button class="activeButton"> 1 </button>
+                                <button class="otherButton" disabled> N </button>
+                                <button class="otherButton" disabled> 2 </button>
+                            </div>
 
-        <li>
-            <p class="detailMatch"> 17:30 à Barcelone Stadium</p>
-            <p class="teamMatch"> FC Barcelone - Villaréal </p>
-            <div class="result">
-                <button class="activeButton"> 1 </button>
-                <button class="otherButton" disabled> N </button>
-                <button class="otherButton" disabled> 2 </button>
-            </div>
+                            <div class="cote">
 
-            <div class="cote">
-                <span class="activeCote">1.30</span>
-                <span class="otherCote">3.40</span>
-                <span class="otherCote">3.75</span> </div>
-        </li>
+                                              <span class="activeCote">v.vote1</span>
+
+
+                                                 <span class="otherCote">v.VoteN</span>
+
+
+                                                    <span class="otherCote">v.vote2</span> </div>
+
+
+
+
+                        </li>
+            {% endfor %}
+
+
     </ul>
 
 {% endblock %}
