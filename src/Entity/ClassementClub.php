@@ -100,9 +100,9 @@ class ClassementClub
         return $this->points;
     }
 
-    public function setPoints(int $points): self
+    public function setPoints(): self
     {
-        $this->points = $points;
+        $this->points += ($this->gagne * 3) + ($this->nul);
 
         return $this;
     }

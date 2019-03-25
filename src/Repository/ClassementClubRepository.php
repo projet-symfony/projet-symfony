@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\ClassementClub;
+use App\Entity\RechercheClassement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -19,12 +21,29 @@ class ClassementClubRepository extends ServiceEntityRepository
         parent::__construct($registry, ClassementClub::class);
     }
 
-    public function printAll()
+    /**
+     * @return Query
+     */
+    public function printAll(RechercheClassement $recherche):Query
     {
-        return $this->createQueryBuilder('c')
+        $query = $this->createQueryBuilder('c')
             ->orderBy('c.points', 'DESC')
-            ->getQuery()
-            ->getResult();
+            ->setMaxResults(10);
+
+        if($recherche->getPays()){
+            $query = $query
+                ->andWhere('c.pays = :pays')
+                ->setParameter('pays',$recherche->getPays());
+        }
+
+        if($recherche->getLigue()){
+            $query = $query
+                ->andWhere('c.Ligue = :Ligue')
+                ->setParameter('Ligue',$recherche->getLigue());
+        }
+
+        return $query->getQuery();
+
     }
 
     // /**

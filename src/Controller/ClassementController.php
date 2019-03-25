@@ -14,6 +14,7 @@ use App\Entity\RechercheClassement;
 use App\Form\RechercheClassementType;
 use App\Repository\ClassementClubRepository;
 use App\Repository\PronostiqueurRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,11 +37,12 @@ class ClassementController extends AbstractController
      * @Route("/Classement/ClassementClub", name="classementclub")
      * @return Response
      */
-    public function indexClubs(Request $request):Response{
+    public function indexClubs(PaginatorInterface $paginator,Request $request):Response{
 
         $recherche = new RechercheClassement();
         $form = $this->createForm(RechercheClassementType::class, $recherche);
         $form->handleRequest($request);
+        //$clubs = $this->repository1->printAll();
 
         /*$club1= new ClassementClub();
         $club1->setClub("Juventus")
@@ -64,7 +66,11 @@ class ClassementController extends AbstractController
         $this->em->persist($club2);
         $this->em->flush(); */
 
-        $clubs = $this->repository1->printAll();
+        //$clubs = $this->repository1->printAll();
+        $clubs = $paginator->paginate($this->repository1->printAll($recherche),
+            $request->query->getInt('page',1),
+            10
+        );
 
 
         return $this->render('Classement/ClassementClub.html.twig', [

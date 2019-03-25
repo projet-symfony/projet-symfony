@@ -10,17 +10,24 @@ namespace App\Entity;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 class RechercheClassement extends AbstractController
 {
     /**
      * @var string|null
+     * @Assert\Type(
+     *     type="string",
+     *     message="The value {{ value }} is not a valid {{ type }}."
+     * )
      */
     private $pays;
 
 
     /**
      * @var integer|null
+     * @Assert\Range(min=1, max=2)
      */
     private $ligue;
 

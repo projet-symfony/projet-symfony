@@ -74,9 +74,9 @@ class Pronostiqueur
         return $this->tauxReussite;
     }
 
-    public function setTauxReussite(float $tauxReussite): self
+    public function setTauxReussite(): self
     {
-        $this->tauxReussite = $tauxReussite;
+        $this->tauxReussite = ($this->nbreReussite * 100)/$this->nbrePronostiques;
 
         return $this;
     }
