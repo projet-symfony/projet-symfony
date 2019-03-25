@@ -1,0 +1,38 @@
+h1{
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    border-width:1px;
+    border-style:solid;
+    border-color:blue;
+    width:80%;
+    margin: auto;
+}
+
+table tr:nth-child(2n){
+    background-color:gray;
+}
+.entete {
+    background-color:gray;
+}
+
+td ,th{
+    text-align: center;
+    border-collapse: collapse;
+    border-width:1px;
+    border-style:solid;
+    border-color:blue;
+    width:50%;
+}
+
+.search{
+    padding-top: 20px;
+}
+.second{
+    padding-top: 22px;
+}
+.third{
+    padding-top: 24px;
+}
