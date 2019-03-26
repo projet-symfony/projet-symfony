@@ -44,6 +44,21 @@ class Utilisateur
      */
     private $ListeMatch;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nbrePronostiques;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $tauxReussite;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $nbreReussite;
+
 
 
     public function __construct()
@@ -126,6 +141,42 @@ class Utilisateur
         if ($this->ListeMatch->contains($listeMatch)) {
             $this->ListeMatch->removeElement($listeMatch);
         }
+
+        return $this;
+    }
+
+    public function getNbrePronostiques(): ?int
+    {
+        return $this->nbrePronostiques;
+    }
+
+    public function setNbrePronostiques(?int $nbrePronostiques): self
+    {
+        $this->nbrePronostiques = $nbrePronostiques;
+
+        return $this;
+    }
+
+    public function getTauxReussite(): ?float
+    {
+        return $this->tauxReussite;
+    }
+
+    public function setTauxReussite(float $tauxReussite): self
+    {
+        $this->tauxReussite = $tauxReussite;
+
+        return $this;
+    }
+
+    public function getNbreReussite(): ?int
+    {
+        return $this->nbreReussite;
+    }
+
+    public function setNbreReussite(int $nbreReussite): self
+    {
+        $this->nbreReussite = $nbreReussite;
 
         return $this;
     }

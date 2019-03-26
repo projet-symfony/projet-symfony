@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Equipe
 {
     /**
-     * @ORM\Igit addd()
+     * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
@@ -45,6 +45,21 @@ class Equipe
      * @ORM\Column(type="integer", nullable=true)
      */
     private $nbPronostique;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Ligue;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $numero;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $points;
 
     public function getId(): ?int
     {
@@ -119,6 +134,42 @@ class Equipe
     public function setNbPronostique(?int $nbPronostique): self
     {
         $this->nbPronostique = $nbPronostique;
+
+        return $this;
+    }
+
+    public function getLigue(): ?int
+    {
+        return $this->Ligue;
+    }
+
+    public function setLigue(int $Ligue): self
+    {
+        $this->Ligue = $Ligue;
+
+        return $this;
+    }
+
+    public function getNumero(): ?int
+    {
+        return $this->numero;
+    }
+
+    public function setNumero(int $numero): self
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    public function getPoints(): ?int
+    {
+        return $this->points;
+    }
+
+    public function setPoints(int $points): self
+    {
+        $this->points = $points;
 
         return $this;
     }
