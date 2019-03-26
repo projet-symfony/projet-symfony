@@ -17,19 +17,14 @@ class Equipe
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $NomEquipe;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
-    private $pays;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $nbpronostique;
+    private $Pays;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -39,50 +34,58 @@ class Equipe
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
+    private $nbMatchGagne;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
     private $nbMatchPerdu;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $nbMatchNull;
+    private $nbPronostique;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $Ligue;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $numero;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $points;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNomEquipe(): ?string
     {
-        return $this->nom;
+        return $this->NomEquipe;
     }
 
-    public function setNom(?string $nom): self
+    public function setNomEquipe(string $NomEquipe): self
     {
-        $this->nom = $nom;
+        $this->NomEquipe = $NomEquipe;
 
         return $this;
     }
 
     public function getPays(): ?string
     {
-        return $this->pays;
+        return $this->Pays;
     }
 
-    public function setPays(?string $pays): self
+    public function setPays(string $Pays): self
     {
-        $this->pays = $pays;
-
-        return $this;
-    }
-
-    public function getNbpronostique(): ?int
-    {
-        return $this->nbpronostique;
-    }
-
-    public function setNbpronostique(?int $nbpronostique): self
-    {
-        $this->nbpronostique = $nbpronostique;
+        $this->Pays = $Pays;
 
         return $this;
     }
@@ -99,6 +102,18 @@ class Equipe
         return $this;
     }
 
+    public function getNbMatchGagne(): ?int
+    {
+        return $this->nbMatchGagne;
+    }
+
+    public function setNbMatchGagne(?int $nbMatchGagne): self
+    {
+        $this->nbMatchGagne = $nbMatchGagne;
+
+        return $this;
+    }
+
     public function getNbMatchPerdu(): ?int
     {
         return $this->nbMatchPerdu;
@@ -111,14 +126,50 @@ class Equipe
         return $this;
     }
 
-    public function getNbMatchNull(): ?int
+    public function getNbPronostique(): ?int
     {
-        return $this->nbMatchNull;
+        return $this->nbPronostique;
     }
 
-    public function setNbMatchNull(?int $nbMatchNull): self
+    public function setNbPronostique(?int $nbPronostique): self
     {
-        $this->nbMatchNull = $nbMatchNull;
+        $this->nbPronostique = $nbPronostique;
+
+        return $this;
+    }
+
+    public function getLigue(): ?int
+    {
+        return $this->Ligue;
+    }
+
+    public function setLigue(int $Ligue): self
+    {
+        $this->Ligue = $Ligue;
+
+        return $this;
+    }
+
+    public function getNumero(): ?int
+    {
+        return $this->numero;
+    }
+
+    public function setNumero(int $numero): self
+    {
+        $this->numero = $numero;
+
+        return $this;
+    }
+
+    public function getPoints(): ?int
+    {
+        return $this->points;
+    }
+
+    public function setPoints(int $points): self
+    {
+        $this->points = $points;
 
         return $this;
     }

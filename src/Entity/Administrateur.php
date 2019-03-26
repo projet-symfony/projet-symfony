@@ -19,12 +19,12 @@ class Administrateur
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $prenom;
+    private $Nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $nom;
+    private $Prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -34,33 +34,33 @@ class Administrateur
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $password;
+    private $Password;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getPrenom(): ?string
+    public function getNom(): ?string
     {
-        return $this->prenom;
+        return $this->Nom;
     }
 
-    public function setPrenom(?string $prenom): self
+    public function setNom(?string $Nom): self
     {
-        $this->prenom = $prenom;
+        $this->Nom = $Nom;
 
         return $this;
     }
 
-    public function getNom(): ?string
+    public function getPrenom(): ?string
     {
-        return $this->nom;
+        return $this->Prenom;
     }
 
-    public function setNom(string $nom): self
+    public function setPrenom(?string $Prenom): self
     {
-        $this->nom = $nom;
+        $this->Prenom = $Prenom;
 
         return $this;
     }
@@ -79,12 +79,12 @@ class Administrateur
 
     public function getPassword(): ?string
     {
-        return $this->password;
+        return $this->Password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $Password): self
     {
-        $this->password = $password;
+        $this->Password = $Password;
 
         return $this;
     }
