@@ -2,6 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="acb1198b-54dc-461a-a1fe-64d8e4ee36a1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Entity/Administrateur.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Equipe.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Match.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Utilisateur.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/AdministrateurRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/EquipeRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/MatchRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/UtilisateurMatchRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/UtilisateurRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blog.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
@@ -34,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Entity/Equipe.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="-1572">
+              <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -78,10 +87,10 @@
         <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/templates/home.html.twig" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/src/Entity/Equipe.php" />
         <option value="$PROJECT_DIR$/src/Repository/UtilisateurMatchRepository.php" />
         <option value="$PROJECT_DIR$/src/Entity/Utilisateur.php" />
         <option value="$PROJECT_DIR$/src/Entity/Match.php" />
+        <option value="$PROJECT_DIR$/src/Entity/Equipe.php" />
       </list>
     </option>
   </component>
@@ -233,18 +242,17 @@
       <workItem from="1552071811876" duration="5000" />
       <workItem from="1552257646056" duration="744000" />
       <workItem from="1553543009453" duration="3955000" />
-      <workItem from="1553591431284" duration="3069000" />
+      <workItem from="1553591431284" duration="3173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33610000" />
+    <option name="totallyTimeSpent" value="33714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23903178" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23903178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -257,7 +265,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" sideWeight="0.49924356" weight="0.32850242" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4977307" visible="true" weight="0.30278233" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4977307" visible="true" weight="0.4811784" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50226927" side_tool="true" weight="0.32850242" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -403,8 +411,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Entity/Equipe.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        <state relative-caret-position="-1572">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
         </state>
       </provider>
     </entry>
