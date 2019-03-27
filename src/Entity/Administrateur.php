@@ -17,12 +17,19 @@ class Administrateur
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+ HEAD
+
+
+     * @ORM\Column(type="string", length=255, nullable=true)
+ master
      */
     private $Nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+ HEAD
+
+     * @ORM\Column(type="string", length=255, nullable=true)
+ master
      */
     private $Prenom;
 
@@ -46,7 +53,10 @@ class Administrateur
         return $this->Nom;
     }
 
-    public function setNom(string $Nom): self
+ HEAD
+
+    public function setNom(?string $Nom): self
+ master
     {
         $this->Nom = $Nom;
 
@@ -57,8 +67,10 @@ class Administrateur
     {
         return $this->Prenom;
     }
+    HEAD
 
-    public function setPrenom(string $Prenom): self
+    public function setPrenom(?string $Prenom): self
+ master
     {
         $this->Prenom = $Prenom;
 

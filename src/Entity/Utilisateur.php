@@ -2,6 +2,11 @@
 
 namespace App\Entity;
 
+ HEAD
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+ master
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +41,15 @@ class Utilisateur
      */
     private $Password;
 
+ HEAD
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Match", inversedBy="ListeUtilisateurs")
+     */
+    private $ListeMatch;
+
+ master
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
@@ -51,8 +65,16 @@ class Utilisateur
      */
     private $nbreReussite;
 
+ HEAD
     public function __Construct(){
         $this->tauxReussite = 0;
+
+
+
+    public function __construct()
+    {
+        $this->ListeMatch = new ArrayCollection();
+ master
     }
 
     public function getId(): ?int
@@ -108,6 +130,35 @@ class Utilisateur
         return $this;
     }
 
+ HEAD
+
+    /**
+     * @return Collection|Match[]
+     */
+    public function getListeMatch(): Collection
+    {
+        return $this->ListeMatch;
+    }
+
+    public function addListeMatch(Match $listeMatch): self
+    {
+        if (!$this->ListeMatch->contains($listeMatch)) {
+            $this->ListeMatch[] = $listeMatch;
+        }
+
+        return $this;
+    }
+
+    public function removeListeMatch(Match $listeMatch): self
+    {
+        if ($this->ListeMatch->contains($listeMatch)) {
+            $this->ListeMatch->removeElement($listeMatch);
+        }
+
+        return $this;
+    }
+
+ master
     public function getNbrePronostiques(): ?int
     {
         return $this->nbrePronostiques;
@@ -125,12 +176,16 @@ class Utilisateur
         return $this->tauxReussite;
     }
 
+ HEAD
     public function setTauxReussite(): self
     {
         $this->tauxReussite = ($this->nbreReussite * 100)/$this->nbrePronostiques;
-
         return $this;
     }
+ master
+
+
+
 
     public function getNbreReussite(): ?int
     {
@@ -143,4 +198,7 @@ class Utilisateur
 
         return $this;
     }
+ HEAD
+
+ master
 }

@@ -2,35 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Utilisateur;
+use App\Entity\UtilisateurMatch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Utilisateur|null find($id, $lockMode = null, $lockVersion = null)
- * @method Utilisateur|null findOneBy(array $criteria, array $orderBy = null)
- * @method Utilisateur[]    findAll()
- * @method Utilisateur[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method UtilisateurMatch|null find($id, $lockMode = null, $lockVersion = null)
+ * @method UtilisateurMatch|null findOneBy(array $criteria, array $orderBy = null)
+ * @method UtilisateurMatch[]    findAll()
+ * @method UtilisateurMatch[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UtilisateurRepository extends ServiceEntityRepository
+class UtilisateurMatchRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Utilisateur::class);
+        parent::__construct($registry, UtilisateurMatch::class);
     }
 
-HEAD
-    public function printAll(){
-        return $this->createQueryBuilder('u')
-            ->orderBy('u.tauxReussite' , 'DESC')
-            ->getQuery()
-            ->getResult();
-    }
-
-
- master
     // /**
-    //  * @return Utilisateur[] Returns an array of Utilisateur objects
+    //  * @return UtilisateurMatch[] Returns an array of UtilisateurMatch objects
     //  */
     /*
     public function findByExampleField($value)
@@ -47,7 +37,7 @@ HEAD
     */
 
     /*
-    public function findOneBySomeField($value): ?Utilisateur
+    public function findOneBySomeField($value): ?UtilisateurMatch
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.exampleField = :val')
