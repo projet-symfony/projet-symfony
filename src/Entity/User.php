@@ -3,7 +3,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository)
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User
 {
@@ -17,18 +17,11 @@ class User
      * @ORM\Column(type="string", length=100)
      */
     private $pseudo;
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $password;
+
     /**
      * @ORM\Column(type="password")
      */
-
-    public function __construct()
-    {
-
-    }
+    private $password;
 
     public function getId(): ?int
     {
