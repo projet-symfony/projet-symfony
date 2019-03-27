@@ -19,8 +19,8 @@
     <div class="search">
 
         {{ form_start(form) }}
-        <div class="first">{{ form_row(form.pays) }}</div>
-        <div class="second"> {{ form_row(form.ligue) }}</div>
+        <div class="first">{{ form_row(form.Pays) }}</div>
+        <div class="second"> {{ form_row(form.Ligue) }}</div>
         <div class="third"><input type="submit" value="Rechercher" /></div>
         {{ form_end(form) }}
 
@@ -35,7 +35,6 @@
                 <th> Points </th>
                 <th> Joués </th>
                 <th> Gagnés </th>²
-                <th> Nuls </th>
                 <th> Perdus </th>
 
             </tr>
@@ -46,12 +45,11 @@
                 {% set p = p + 1 %}
                 <tr>
                     <td> {{ p }}</td>
-                    <td> {{ c.club }} </td>
+                    <td> {{ c.Nom }} </td>
                     <td> {{ c.points }} </td>
-                    <td> {{ c.joue }} </td>
-                    <td> {{ c.gagne}} </td>
-                    <td> {{ c.nul}} </td>
-                    <td> {{ c.perdu}} </td>
+                    <td> {{ c.nbMatchJoue }} </td>
+                    <td> {{ c.nbMatchGagne}} </td>
+                    <td> {{ c.nbMatchPerdu}} </td>
                 </tr>
 
             {% endfor %}

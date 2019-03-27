@@ -9,25 +9,26 @@
 namespace App\Controller;
 
 
-use App\Entity\Pronostiqueur;
+use App\Entity\Utilisateur;
 use App\Entity\RechercheClassement;
 use App\Form\RechercheClassementType;
-use App\Repository\ClassementClubRepository;
-use App\Repository\PronostiqueurRepository;
+use App\Repository\EquipeRepository;
+use App\Repository\UtilisateurRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\ClassementClub;
+use App\Entity\Equipe;
 
 class ClassementController extends AbstractController
 {
     private $em;
-    private $repository;
+    private $repository1;
+    private $repository2;
 
-    public function __Construct(ClassementClubRepository $repository1, PronostiqueurRepository $repository2,ObjectManager $em){
+    public function __Construct(EquipeRepository $repository1, UtilisateurRepository $repository2,ObjectManager $em){
         $this->em = $em;
         $this->repository1 = $repository1;
         $this->repository2 = $repository2;
