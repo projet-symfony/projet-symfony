@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
- HEAD
 
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
- master
-use Doctrine\ORM\Mapping as ORM;
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
@@ -41,7 +41,7 @@ class Utilisateur
      */
     private $Password;
 
- HEAD
+
 
 
     /**
@@ -49,7 +49,7 @@ class Utilisateur
      */
     private $ListeMatch;
 
- master
+
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
@@ -65,16 +65,10 @@ class Utilisateur
      */
     private $nbreReussite;
 
- HEAD
-    public function __Construct(){
-        $this->tauxReussite = 0;
-
-
-
     public function __construct()
     {
         $this->ListeMatch = new ArrayCollection();
- master
+        $this->tauxReussite = 0;
     }
 
     public function getId(): ?int
@@ -130,7 +124,7 @@ class Utilisateur
         return $this;
     }
 
- HEAD
+
 
     /**
      * @return Collection|Match[]
@@ -158,7 +152,7 @@ class Utilisateur
         return $this;
     }
 
- master
+
     public function getNbrePronostiques(): ?int
     {
         return $this->nbrePronostiques;
@@ -176,13 +170,13 @@ class Utilisateur
         return $this->tauxReussite;
     }
 
- HEAD
+
     public function setTauxReussite(): self
     {
         $this->tauxReussite = ($this->nbreReussite * 100)/$this->nbrePronostiques;
         return $this;
     }
- master
+
 
 
 
@@ -198,7 +192,7 @@ class Utilisateur
 
         return $this;
     }
- HEAD
 
- master
+
+
 }

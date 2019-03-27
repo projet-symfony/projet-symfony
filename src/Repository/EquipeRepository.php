@@ -3,13 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Equipe;
-HEAD
 use App\Entity\RechercheClassement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 
 
- master
+
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -25,7 +24,7 @@ class EquipeRepository extends ServiceEntityRepository
         parent::__construct($registry, Equipe::class);
     }
 
-HEAD
+
     /**
      * @return Query
      */
@@ -53,7 +52,7 @@ HEAD
 
 
 
-master
+
     // /**
     //  * @return Equipe[] Returns an array of Equipe objects
     //  */

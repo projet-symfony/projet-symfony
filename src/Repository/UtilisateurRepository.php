@@ -19,7 +19,7 @@ class UtilisateurRepository extends ServiceEntityRepository
         parent::__construct($registry, Utilisateur::class);
     }
 
-HEAD
+
     public function printAll(){
         return $this->createQueryBuilder('u')
             ->orderBy('u.tauxReussite' , 'DESC')
@@ -28,7 +28,7 @@ HEAD
     }
 
 
- master
+
     // /**
     //  * @return Utilisateur[] Returns an array of Utilisateur objects
     //  */

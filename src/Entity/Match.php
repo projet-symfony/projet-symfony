@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
- HEAD
+
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
- master
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,7 +21,7 @@ class Match
      */
     private $id;
 
-HEAD
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -65,12 +65,12 @@ HEAD
         $this->ListeUtilisateurs = new ArrayCollection();
     }
 
- master
+
     public function getId(): ?int
     {
         return $this->id;
     }
- HEAD
+
 
 
     public function getLieu(): ?string
@@ -176,5 +176,5 @@ HEAD
 
 
 
- master
+
 }
