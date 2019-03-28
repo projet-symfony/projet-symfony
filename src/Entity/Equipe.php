@@ -178,7 +178,7 @@ class Equipe
 
     public function setPoints(): self
     {
-        $this->points += ($this->gagne * 3) + ($this->nul);
+        $this->points += ($this->nbMatchGagne * 3) ;
         return $this;
     }
 

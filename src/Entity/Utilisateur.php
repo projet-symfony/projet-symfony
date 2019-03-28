@@ -45,7 +45,7 @@ class Utilisateur
 
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Match", inversedBy="ListeUtilisateurs")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Jeu", inversedBy="ListeUtilisateurs")
      */
     private $ListeMatch;
 
@@ -127,14 +127,14 @@ class Utilisateur
 
 
     /**
-     * @return Collection|Match[]
+     * @return Collection|Jeu[]
      */
     public function getListeMatch(): Collection
     {
         return $this->ListeMatch;
     }
 
-    public function addListeMatch(Match $listeMatch): self
+    public function addListeMatch(Jeu $listeMatch): self
     {
         if (!$this->ListeMatch->contains($listeMatch)) {
             $this->ListeMatch[] = $listeMatch;
@@ -143,7 +143,7 @@ class Utilisateur
         return $this;
     }
 
-    public function removeListeMatch(Match $listeMatch): self
+    public function removeListeMatch(Jeu $listeMatch): self
     {
         if ($this->ListeMatch->contains($listeMatch)) {
             $this->ListeMatch->removeElement($listeMatch);

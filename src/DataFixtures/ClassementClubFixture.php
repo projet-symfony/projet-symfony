@@ -19,7 +19,7 @@ class ClassementClubFixture extends Fixture
                 ->setNbMatchPerdu($faker->numberBetween(2,20))
                 ->setNbMatchJoue($faker->numberBetween(2,20))
                 ->setNbMatchGagne($faker->numberBetween(2,20))
-                ->setNom($faker->words(1,true))
+                ->setNomEquipe($faker->words(1,true))
                 ->setLigue($faker->numberBetween(1,2))
                 ->setPays($faker->country)
                 ->setPoints();
