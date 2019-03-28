@@ -3,7 +3,12 @@
 namespace App\Repository;
 
 use App\Entity\Equipe;
+use App\Entity\RechercheClassement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
+
+
+
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,6 +23,35 @@ class EquipeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Equipe::class);
     }
+
+
+    /**
+     * @return Query
+     */
+    public function printAll(RechercheClassement $recherche):Query
+    {
+        $query = $this->createQueryBuilder('e')
+            ->orderBy('e.points', 'DESC')
+            ->setMaxResults(10);
+
+        if($recherche->getPays()){
+            $query = $query
+                ->andWhere('e.Pays = :pays')
+                ->setParameter('pays',$recherche->getPays());
+        }
+
+        if($recherche->getLigue()){
+            $query = $query
+                ->andWhere('e.Ligue = :Ligue')
+                ->setParameter('Ligue',$recherche->getLigue());
+        }
+
+        return $query->getQuery();
+
+    }
+
+
+
 
     // /**
     //  * @return Equipe[] Returns an array of Equipe objects

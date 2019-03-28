@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
+
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
@@ -39,10 +42,13 @@ class Utilisateur
     private $Password;
 
 
+
+
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Match", inversedBy="ListeUtilisateurs")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Jeu", inversedBy="ListeUtilisateurs")
      */
     private $ListeMatch;
+
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -59,11 +65,10 @@ class Utilisateur
      */
     private $nbreReussite;
 
-
-
     public function __construct()
     {
         $this->ListeMatch = new ArrayCollection();
+        $this->tauxReussite = 0;
     }
 
     public function getId(): ?int
@@ -119,15 +124,17 @@ class Utilisateur
         return $this;
     }
 
+
+
     /**
-     * @return Collection|Match[]
+     * @return Collection|Jeu[]
      */
     public function getListeMatch(): Collection
     {
         return $this->ListeMatch;
     }
 
-    public function addListeMatch(Match $listeMatch): self
+    public function addListeMatch(Jeu $listeMatch): self
     {
         if (!$this->ListeMatch->contains($listeMatch)) {
             $this->ListeMatch[] = $listeMatch;
@@ -136,7 +143,7 @@ class Utilisateur
         return $this;
     }
 
-    public function removeListeMatch(Match $listeMatch): self
+    public function removeListeMatch(Jeu $listeMatch): self
     {
         if ($this->ListeMatch->contains($listeMatch)) {
             $this->ListeMatch->removeElement($listeMatch);
@@ -144,6 +151,7 @@ class Utilisateur
 
         return $this;
     }
+
 
     public function getNbrePronostiques(): ?int
     {
@@ -162,12 +170,16 @@ class Utilisateur
         return $this->tauxReussite;
     }
 
-    public function setTauxReussite(float $tauxReussite): self
-    {
-        $this->tauxReussite = $tauxReussite;
 
+    public function setTauxReussite(): self
+    {
+        $this->tauxReussite = ($this->nbreReussite * 100)/$this->nbrePronostiques;
         return $this;
     }
+
+
+
+
 
     public function getNbreReussite(): ?int
     {
@@ -180,5 +192,7 @@ class Utilisateur
 
         return $this;
     }
+
+
 
 }

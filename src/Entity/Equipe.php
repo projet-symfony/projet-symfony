@@ -61,6 +61,14 @@ class Equipe
      */
     private $points;
 
+
+    public function __Construct(){
+        $this->numero = 0;
+        $this->points = 0;
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -167,10 +175,14 @@ class Equipe
         return $this->points;
     }
 
-    public function setPoints(int $points): self
-    {
-        $this->points = $points;
 
+    public function setPoints(): self
+    {
+        $this->points += ($this->nbMatchGagne * 3) ;
         return $this;
     }
+
+
+
+
 }

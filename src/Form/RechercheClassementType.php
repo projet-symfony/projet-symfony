@@ -16,18 +16,18 @@ class RechercheClassementType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-           ->add('pays', TextType::class ,[
+           ->add('Pays', TextType::class ,[
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'pays'
+                    'placeholder' => 'Pays'
                 ]
             ])
-            ->add('ligue', IntegerType::class, [
+            ->add('Ligue', IntegerType::class, [
                 'required' => false,
                 'label' => false,
                 'attr' => [
-                    'placeholder' => 'ligue'
+                    'placeholder' => 'Ligue'
                 ]
             ])
             //->add('container')
