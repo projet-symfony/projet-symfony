@@ -1,0 +1,63 @@
+{%  extends "base.html.twig" %}
+
+{% block title  %}
+    Nous contacter
+{% endblock %}
+
+
+
+    {%  block body %}
+        <h2 class="title">Formulaire de contact</h2>
+        <p>Vous pouvez nous contacter via le formulaire ci-dessous. Vous recevrez un accus&eacute; de r&eacute;ception sous quelques minutes et une r&eacute;ponse &agrave; votre question sous quelques heures.<br/>
+            (Les donn&eacute;es saisies dans ce formulaire resteront strictement confidentielles).</p>
+        <p id="required_field" class="small">Les champs marqu&eacute;s d'un <span class="required">*</span> sont requis.</p>
+        <form onsubmit="return checkedForm();" id="form_contact" method="post" action="contact.php">
+            <p><label>Nom <span class="required">*</span> :</label><input onfocus="change(this);"  type="text" name="nom" id="nom" value=""/></p>
+            <p><label>Pseudo Forum :</label><input onfocus="change(this);" type="text" value="" name="pseudo" id="pseudo" /></p>
+            <p><label>Adresse email <span class="required">*</span> :</label><input onfocus="change(this);"  type="text" value="" name="mail" size="30"  id="mail" /></p>
+            <p>
+                <label>Sujet <span class="required">*</span> :</label>
+                <select onfocus="change(this);"  name="sujet" id="sujet">
+                    <option selected="selected" value="0" >- S&eacute;lectionnez un sujet -</option>
+                    <option value="empty"></option>
+                    <option class="bold" value="2"> PronoFoot Expert Plus</option>
+                    <option value="3"> &nbsp;&nbsp;-Licence non reçue après commande</option>
+                    <option value="4"> &nbsp;&nbsp;-Licence officielle perdue</option>
+                    <option value="5"> &nbsp;&nbsp;-Question sur l'installation du logiciel</option>
+                    <option value="6"> &nbsp;&nbsp;-Filtrage / Réduction des grilles</option>
+                    <option value="7"> &nbsp;&nbsp;-Demande d'explications sur le fonctionnement</option>
+                    <option value="empty"></option>
+                    <option class="bold" value="8"> ParionsSport 1N2</option>
+                    <option value="9"> &nbsp;&nbsp;-Match annulé / reporté / suspendu</option>
+                    <option value="10"> &nbsp;&nbsp;-Reçu de jeu avec match &quot;en cours&quot;</option>
+                    <option value="11"> &nbsp;&nbsp;-Signaler une erreur de résultat</option>
+                    <option value="empty"></option>
+                    <option class="bold" value="12"> Forums Nextipster</option>
+                    <option value="13"> &nbsp;&nbsp;-Mot de passe perdu</option>
+                    <option value="14"> &nbsp;&nbsp;-Pseudo oublié</option>
+                    <option value="15"> &nbsp;&nbsp;-Compte bloqué ou banni</option>
+                    <option value="16"> &nbsp;&nbsp;-Demande de désactivation de compte</option>
+                    <option value="empty"></option>
+                    <option class="bold" value="17"> LotoFoot</option>
+                    <option value="22"> &nbsp;&nbsp;-Prochains pactoles</option>
+                    <option value="23"> &nbsp;&nbsp;-Estimateur de rapports Nextipster</option>
+                    <option value="empty"></option>
+                    <option class="bold" value="18"> PMU - Turf</option>
+                    <option value="24"> &nbsp;&nbsp;-Coût des pronostics Quinté+</option>
+                    <option value="empty"></option>
+                    <option class="bold" value="19"> Poker - FreeRoll</option>
+                    <option value="empty"></option>
+                    <option class="bold" value="20"> Concours Nextipster et Lots</option>
+                    <option value="empty"></option>
+                    <option class="bold" value="21"> Appli Nextipster sur Mobile</option>
+                    <option value="empty"></option>
+                    <option class="bold" value="1"> Autres...</option>
+                </select>
+            </p>
+
+            <p><label>Message <span class="required">*</span> :</label><textarea onfocus="change(this);"  rows="10" cols="40" name="msg" id="msg"></textarea></p>
+            <p class="last"><label id="question">Combien font deux plus six (tapez un chiffre) <span class="required">*</span> :</label><input onfocus="change(this);"  type="text" value="" name="antispam" id="antispam" /></p>
+            <p id="submit_form"><input type="submit" value="Envoyer" name="btSend" /></p>
+        </form>
+
+    {% endblock %}

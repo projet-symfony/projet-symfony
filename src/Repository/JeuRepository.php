@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Jeu;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query as QueryAlias;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,6 +19,19 @@ class JeuRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Jeu::class);
     }
+
+    /**
+     * @return QueryAlias
+     */
+    public function printAll()
+    {
+        return $this->createQueryBuilder('J')
+            ->orderBy('J.date', 'ASC')
+            ->orderBy('J.heure', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
 
     // /**
     //  * @return Jeu[] Returns an array of Jeu objects
@@ -36,15 +50,28 @@ class JeuRepository extends ServiceEntityRepository
     }
     */
 
+
     /*
-    public function findOneBySomeField($value): ?Jeu
+      public function findOneBySomeField($value): ?Jeu
+      {
+          return $this->createQueryBuilder('j')
+              ->andWhere('j.id = :val')
+              ->setParameter('val', $value)
+              ->getQuery()
+              ->getResult()
+          ;
+      }*/
+    public function findAllId($id): array
     {
-        return $this->createQueryBuilder('j')
-            ->andWhere('j.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT J
+        FROM App\Entity\Jeu
+        WHERE J.id = :id'
+        )->setParameter('id', $id);
+
+        // returns an array of Product objects
+        return $query->execute();
     }
-    */
 }

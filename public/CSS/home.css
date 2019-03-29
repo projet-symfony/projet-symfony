@@ -20,13 +20,13 @@ h2{
 }
 
 .ulMatch{
-    width:65%;
+    width:90%;
     background-color:#f1f1f1;
-    margin-left:120px;
+    margin-left:100px;
     list-style-type: none;
     padding: 0;
     overflow: hidden;
-    margin-left:200px;
+    margin-left:100px;
     margin-bottom:70px;
 }
 .match{
@@ -55,11 +55,11 @@ h2{
 }
 
 .team{
-    margin-left:30%;
+    margin-left:20%;
 }
 
 .nbavis{
-    margin-left:30%;
+    margin-left:10%;
     border : solid 1px transparent ;
     background-color: darkgray;
     border-radius:3px;

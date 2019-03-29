@@ -6,16 +6,31 @@
  * Time: 10:36
  */
 namespace App\Controller;
+use App\Repository\JeuRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 class AnalyseController extends AbstractController
 {
+    private $repository ;
+    private $em;
+
+    public function __construct(JeuRepository $repository, ObjectManager $em)
+    {
+        $this->repository = $repository;
+        $this->em = $em;
+    }
     /**
      * @Route("/Analyse/Analyse" ,name="Analyse")
      */
-    public function analysePage(){
-        return $this->render('/Analyse/Analyse.html.twig');
+    public function analysePage(Request $request){
+
+        $jeu = $this->repository->find($request->query->get('id'));
+        return $this->render('Analyse/Analyse.html.twig', [
+            'jeu' => $jeu]);
+
     }
     /**
      * @Route("/article/{slug}")

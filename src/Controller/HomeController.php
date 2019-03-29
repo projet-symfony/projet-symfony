@@ -7,31 +7,37 @@
  */
 
 namespace App\Controller;
+use App\Repository\JeuRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+
+    private $repository ;
+    private $em;
+    public function __construct(JeuRepository $repository, ObjectManager $em)
+    {
+        $this->repository = $repository;
+        $this->em = $em;
+    }
+
+
+
+
     /**
      * @Route("/")
      */
     public function homepage(){
-        return $this->render('home.html.twig');
-    }
 
-    /**
-     * @Route("/article/{slug}")
-     */
-    public function readAll($slug){
+        $jeu = $this->repository->printAll();
+        return $this->render('home.html.twig', [
+            'jeu' => $jeu]);
 
-        var_dump($slug);
-        return new Response('For All Article');
     }
 
 
-    public function read($slug){
-        return $this->render('article/read.html.twig');
-    }
 
 }

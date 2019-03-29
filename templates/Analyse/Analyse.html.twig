@@ -12,23 +12,25 @@
     {%  block body %}
         <h2> ANALYSE DE MATCH</h2>
         <hr class="separator">
+            <ul>
+                <li>
 
-        <ul>
-            <li>
-                <p class="detailMatch"> 17:30 à Parc des princes</p>
-                <p class="teamMatch"> Paris Saint Germains - Olympique Lyonnais </p>
-                <div class="result">
-                    <button class="activeButton"> 1 </button>
-                    <button class="otherButton" disabled> N </button>
-                    <button class="otherButton" disabled> 2 </button>
-                </div>
+                    <p class="detailMatch"> {{ jeu.heure|date('H:i:s') }} {{ jeu.date|date('Y-m-d') }} à {{ jeu.Lieu }}</p>
+                    <p class="teamMatch"> {{ jeu.getIdEquipe1().NomEquipe }} -- {{ jeu.getIdEquipe2().NomEquipe }} </p>
+                    <div class="result">
+                        <button class="activeButton"> 1 </button>
+                        <button class="otherButton" disabled> N </button>
+                        <button class="otherButton" disabled> 2 </button>
+                    </div>
 
-                <div class="cote">
-                    <span class="activeCote">1.30</span>
-                    <span class="otherCote">3.40</span>
-                    <span class="otherCote">3.75</span> </div>
-            </li>
-        </ul>
+                    <div class="cote">
+                        <span class="activeCote">1.30</span>
+                        <span class="otherCote">3.40</span>
+                        <span class="otherCote">3.75</span> </div>
+                </li>
+
+            </ul>
+
 
 
 
