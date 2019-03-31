@@ -3,7 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Equipe;
-use App\Entity\RechercheClassement;
+
+use App\Entity\RechercheClassementEquipe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 
@@ -26,9 +27,10 @@ class EquipeRepository extends ServiceEntityRepository
 
 
     /**
+     * @param RechercheClassementEquipe $recherche
      * @return Query
      */
-    public function printAll(RechercheClassement $recherche):Query
+    public function printAll(RechercheClassementEquipe $recherche):Query
     {
         $query = $this->createQueryBuilder('e')
             ->orderBy('e.points', 'DESC')

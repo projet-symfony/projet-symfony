@@ -9,9 +9,12 @@
 namespace App\Controller;
 
 
+use App\Entity\RechercheClassementEquipe;
+use App\Entity\RechercheClassementUtilisateur;
 use App\Entity\Utilisateur;
-use App\Entity\RechercheClassement;
-use App\Form\RechercheClassementType;
+use App\Entity\Equipe;
+use App\Form\RechercheClassementEquipeType;
+use App\Form\RechercheClassementUtilisateurType;
 use App\Repository\EquipeRepository;
 use App\Repository\UtilisateurRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -20,7 +23,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Equipe;
+
 
 class ClassementController extends AbstractController
 {
@@ -40,34 +43,10 @@ class ClassementController extends AbstractController
      */
     public function indexClubs(PaginatorInterface $paginator,Request $request):Response{
 
-        $recherche = new RechercheClassement();
-        $form = $this->createForm(RechercheClassementType::class, $recherche);
+        $recherche = new RechercheClassementEquipe();
+        $form = $this->createForm(RechercheClassementEquipeType::class, $recherche);
         $form->handleRequest($request);
-        //$clubs = $this->repository1->printAll();
 
-        /*$club1= new ClassementClub();
-        $club1->setClub("Juventus")
-            ->setGagne(5)
-            ->setJoue(20)
-            ->setPerdu(5)
-            ->setNul(10)
-            ->setPoints();
-
-        $this->em->persist($club1);
-        $this->em->flush();
-
-        $club2= new ClassementClub();
-        $club2->setClub("Inter")
-            ->setGagne(10)
-            ->setJoue(20)
-            ->setPerdu(5)
-            ->setNul(5)
-            ->setPoints();
-
-        $this->em->persist($club2);
-        $this->em->flush(); */
-
-        //$clubs = $this->repository1->printAll();
         $clubs = $paginator->paginate($this->repository1->printAll($recherche),
             $request->query->getInt('page',1),
             10
@@ -84,36 +63,22 @@ class ClassementController extends AbstractController
      * @Route("/Classement/ClassementPronostiqueur", name="classementpronostiqueur")
      * @return Response
      */
-    public function indexPronostiqueurs(): Response{
-        /* $p1 = new Pronostiqueur();
-         $p1->setNom('Daniel Dupont')
-             ->setNbrePronostiques(300)
-             ->setNbreReussite(250)
-             ->setTauxReussite();
-         $this->em->persist($p1);
-         $this->em->flush();
+    public function indexPronostiqueurs(PaginatorInterface $paginator2,Request $request): Response{
+        //$recherche = new RechercheClassementUtilisateur();
+        //$form = $this->createForm(RechercheClassementUtilisateurType::class, $recherche);
+        //$form->handleRequest($request);
 
-         $p2 = new Pronostiqueur();
-         $p2->setNom('Camille Leboeuf')
-             ->setNbrePronostiques(300)
-             ->setNbreReussite(200)
-             ->setTauxReussite();
-         $this->em->persist($p2);
-         $this->em->flush();
+        $pronostiqueurs = $paginator2->paginate($this->repository2->printAll(/*$recherche*/),
+            $request->query->getInt('page',1),
+            10
+        );
 
-         $p3 = new Pronostiqueur();
-         $p3->setNom('Abu Zirkoff')
-             ->setNbrePronostiques(350)
-             ->setNbreReussite(280)
-             ->setTauxReussite();
-         $this->em->persist($p3);
-         $this->em->flush();*/
-
-        $pronostiqueurs = $this->repository2->printAll();
-
-        return $this->render('Classement/ClassementPronostiqueur.html.twig' , [
-            'pronostiqueurs' => $pronostiqueurs
+        return $this->render('Classement/ClassementPronostiqueur.html.twig', [
+            'pronostiqueurs' => $pronostiqueurs,
+            //'form' => $form->createView()
         ]);
+
+
     }
 
 }
