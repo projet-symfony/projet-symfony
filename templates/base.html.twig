@@ -38,36 +38,26 @@
 
     <br /> <br />
         <h4> Top User </h4>
+
+        {%  set count=0 %}
+        {%    for lu in listTopUser %}
+        {% set count = count + 1 %}
         <ul class="ulFirstUser">
+            {% if count == 1 %}
             <li id="FirstUser">
-                <span id="nbUser"> 1 </span>
+                <span id="nbUser"> {{  count }} </span>
                 <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
+                <span id="nameUser"> {{ lu.login }}</span>
             </li>
 
+            {%  else %}
             <li>
-                <span id="nbUser"> 2 </span>
+                <span id="nbUser"> {{ count }} </span>
                 <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
+                <span id="nameUser"> {{ lu.login  }}</span>
             </li>
-
-            <li>
-                <span id="nbUser"> 3 </span>
-                <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
-            </li>
-
-            <li>
-                <span id="nbUser"> 4 </span>
-                <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
-            </li>
-
-            <li id="LastUser">
-                <span id="nbUser"> 5 </span>
-                <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
-            </li>
+            {% endif %}
+        {% endfor %}
 
         </ul>
     </div>

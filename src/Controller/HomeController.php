@@ -40,16 +40,20 @@ class HomeController extends AbstractController
 
         }
 
-        /*
-        $repository2 = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository(Pronostiqueur::class)
-        ;
-        $listprono = $repository2->printAll();
-        */
+        $aux  = $repository->printAll();
+        $count=1;
+        $listTopUser= [];
+        foreach($aux as $element){
+            array_push($listTopUser,$element);
+            if($count==5){
+                break;
+            }
 
-        return $this->render('home/home.html.twig',array('form'=>$form->createView()));
+            $count++;
+        }
+
+
+        return $this->render('home/home.html.twig',array('form'=>$form->createView(),'listTopUser'=>$listTopUser));
 
     }
 
