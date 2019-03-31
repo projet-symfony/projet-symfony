@@ -27,6 +27,10 @@ class UtilisateurRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findByPercentage(){
+        //select * form user order by pourcentage DESC:
+    }
+
 
 
     // /**
