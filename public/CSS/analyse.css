@@ -1,0 +1,133 @@
+.body ul{
+    list-style-type: none;
+    position:relative;
+    left:20%;
+    width:60%;
+}
+
+.body li{
+    border:solid 1px black;
+    border-radius:4px;
+    margin-bottom : 20px;
+    background-color:#BABDF9;
+}
+
+h2{
+    text-align: center;
+    font-family:Calibri;
+    font-size:33px;
+    color:#54423F;
+    margin-bottom:20px;
+}
+
+.separator{
+    height:0.1px;
+    color:lightgray;
+    width:80%;
+    margin-bottom:60px;
+}
+
+li .detailMatch{
+    position:relative;
+    top:0;
+    font-size:12px;
+}
+
+li .teamMatch{
+    font-weight:bold;
+    font-family: Calibri;
+    text-align:center;
+    font-size:23px;
+}
+
+li .result{
+    margin-left:25%;
+    margin-bottom:10px;
+}
+
+li .result .otherButton{
+    padding:10px 15px;
+    margin-right:15%;
+}
+
+li .result .activeButton{
+    padding:10px 15px;
+    margin-right:15%;
+    box-shadow: 0.5px 0.5px  1px 1px blue;
+}
+li .cote{
+    margin-left:26%;
+    margin-bottom:10px;
+    font-family:calibri;
+    font-size:16px;
+}
+
+li .cote .otherCote{
+    margin-right:19%;
+}
+
+li .cote .activeCote{
+    font-weight:bold;
+    margin-right:19%;
+}
+body .stade{
+
+    list-style-type: none;
+    position:relative;
+    left:20%;
+    width:50%;
+    background-color:#BABDF9;
+    padding: 20px;
+    overflow: hidden;
+
+
+}
+h3{
+    text-align: center;
+    font-family:Calibri;
+    font-size:25px;
+    color:#54423F;
+    margin-bottom:20px;
+}
+
+#team1, th, td{
+
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#team2, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th,td{
+    padding: 15px;
+    text-align: center;}
+
+#face, th, td{
+
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+#team1{
+    display: inline-block;
+}
+#team2{
+    float: right;
+}
+body .Forme{
+    position:relative;
+    padding-left: 150px;
+    padding-right: 150px;
+    overflow: hidden;
+
+}
+.face{
+    position:relative;
+    padding-left: 325px;
+    overflow: hidden; }
+.Statistique{
+    position:relative;
+    padding-left: 250px;
+    padding-right: 250px;
+    overflow: hidden;
+}
