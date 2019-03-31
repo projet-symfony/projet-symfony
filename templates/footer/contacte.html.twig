@@ -11,7 +11,7 @@
         <p>Vous pouvez nous contacter via le formulaire ci-dessous. Vous recevrez un accus&eacute; de r&eacute;ception sous quelques minutes et une r&eacute;ponse &agrave; votre question sous quelques heures.<br/>
             (Les donn&eacute;es saisies dans ce formulaire resteront strictement confidentielles).</p>
         <p id="required_field" class="small">Les champs marqu&eacute;s d'un <span class="required">*</span> sont requis.</p>
-        <form onsubmit="return checkedForm();" id="form_contact" method="post" action="contact.php">
+        <form onsubmit="return checkedForm();" id="form_contact" action="footer">
             <p><label>Nom <span class="required">*</span> :</label><input onfocus="change(this);"  type="text" name="nom" id="nom" value=""/></p>
             <p><label>Pseudo Forum :</label><input onfocus="change(this);" type="text" value="" name="pseudo" id="pseudo" /></p>
             <p><label>Adresse email <span class="required">*</span> :</label><input onfocus="change(this);"  type="text" value="" name="mail" size="30"  id="mail" /></p>
@@ -56,7 +56,7 @@
             </p>
 
             <p><label>Message <span class="required">*</span> :</label><textarea onfocus="change(this);"  rows="10" cols="40" name="msg" id="msg"></textarea></p>
-            <p class="last"><label id="question">Combien font deux plus six (tapez un chiffre) <span class="required">*</span> :</label><input onfocus="change(this);"  type="text" value="" name="antispam" id="antispam" /></p>
+
             <p id="submit_form"><input type="submit" value="Envoyer" name="btSend" /></p>
         </form>
 

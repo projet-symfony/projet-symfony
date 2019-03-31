@@ -9,12 +9,25 @@
 namespace App\Controller;
 
 
+use App\Entity\Contacte;
+use App\Repository\ContacteRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class FooterController extends AbstractController
 {
+
+    private $repository ;
+    private $em;
+
+    public function __construct(contacteRepository $repository, ObjectManager $em)
+    {
+        $this->repository = $repository;
+        $this->em = $em;
+    }
     /**
      * @Route("/footer/info" ,name="info")
      */
@@ -27,6 +40,26 @@ class FooterController extends AbstractController
     public function contactePage(){
         return $this->render('/footer/contacte.html.twig');
     }
+    /**
+     * @Route("/footer/footer", name="footer")
+     */
+     public function  index(Request $request){
+         $name = $request->get("nom");
+         $message = $request->get("msg");
+         $email = $request->get("mail");
+         $pseudoForum = $request->get("pseudo");
+         $sujet = $request->get("sujet");
+         $contacte=new Contacte();
+         $contacte->setAddressemai($email)
+             ->setMessage($message)
+             ->setNom($name)
+             ->setPseudoforum($pseudoForum)
+             ->setSujet($sujet);
+         $this->em->persist($contacte);
+         $this->em->flush();
+         return $this->render('message.html.twig',["name"=>$name,
+             "message"=>"ttttttttt"]);
+     }
     /**
      * @Route("/footer/plan" ,name="plan")
      */

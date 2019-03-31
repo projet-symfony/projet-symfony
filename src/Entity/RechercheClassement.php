@@ -19,7 +19,7 @@ class RechercheClassement extends AbstractController
      * @var string|null
      * @Assert\Type(
      *     type="string",
-     *     message="The value {{ value }} is not a valid {{ type }}."
+     *     message.html.twig="The value {{ value }} is not a valid {{ type }}."
      * )
      */
     private $pays;
