@@ -1,14 +1,12 @@
 <?php
 
 namespace App\DataFixtures;
-
-
 use App\Entity\Equipe;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
 
-class ClassementClubFixture extends Fixture
+class EquipeFixture extends Fixture
 {
     public function load(ObjectManager $manager)
     {

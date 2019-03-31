@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\RechercheClassement;
+use App\Entity\RechercheClassementEquipe;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -11,12 +11,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class RechercheClassementType extends AbstractType
+class RechercheClassementEquipeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-           ->add('Pays', TextType::class ,[
+            ->add('Pays', TextType::class ,[
                 'required' => false,
                 'label' => false,
                 'attr' => [
@@ -37,7 +37,7 @@ class RechercheClassementType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => RechercheClassement::class,
+            'data_class' => RechercheClassementEquipe::class,
             'method' => 'get',
             'csrf_protection' => false
         ]);

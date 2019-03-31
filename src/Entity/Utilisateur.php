@@ -56,12 +56,12 @@ class Utilisateur
     private $nbrePronostiques;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float", nullable=true)
      */
     private $tauxReussite;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $nbreReussite;
 

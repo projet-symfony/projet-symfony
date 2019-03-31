@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
-class RechercheClassement extends AbstractController
+class RechercheClassementEquipe extends AbstractController
 {
     /**
      * @var string|null
