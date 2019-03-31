@@ -69,6 +69,7 @@ class Utilisateur
     {
         $this->ListeMatch = new ArrayCollection();
         $this->tauxReussite = 0;
+        $this->nbreReussite=0;
     }
 
     public function getId(): ?int

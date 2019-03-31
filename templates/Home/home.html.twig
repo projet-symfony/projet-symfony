@@ -8,7 +8,16 @@ Nextipster
     <link rel="stylesheet" type="text/css" href="{{ asset('CSS/home.css') }}">
 {% endblock %}
 
+
+
+{% block titleForm %} Login {% endblock %}
+{% block form %}{{form(form)}} {% endblock %}
+{% block register %} <button><a href="/register">S'inscrire</a></button> {% endblock %}
+
+
+
 {%  block body %}
+
 
     <div id="slides">
         <img src="" alt="slides">

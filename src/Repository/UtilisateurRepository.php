@@ -31,6 +31,10 @@ class UtilisateurRepository extends ServiceEntityRepository
         //return $query->getQuery();
     }
 
+    public function findByPercentage(){
+        //select * form user order by pourcentage DESC:
+    }
+
 
 
     // /**

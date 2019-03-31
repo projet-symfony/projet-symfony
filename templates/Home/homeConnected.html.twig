@@ -1,0 +1,35 @@
+{%  extends "base2.html.twig" %}
+
+{% block title  %}
+    Nextipster
+{% endblock %}
+
+{%  block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/home.css') }}">
+{% endblock %}
+
+{%  block body %}
+
+    <div id="slides">
+        <img src="" alt="slides">
+    </div>
+
+    <h2> Matchs de la semaine </h2>
+    <hr class="separator"> <br />
+
+    <ul class="ulMatch">
+        <li class="headerMatch"> Champions League </li>
+        <li class="match"><a href= "{{ path('Analyse') }}"> <span class="time">18:55</span> <span class="team">Paris - Réal</span>  <span class="nbAvis"> 5 Avis </span> </a></li>
+        <li class="match"><a href= "{{ path('Analyse') }}">  <span class="time">14:00</span>  <span class="team"> Barça - Juventus </span>  </a> </li>
+    </ul>
+
+    <ul class="ulMatch">
+        <li class="headerMatch"> Ligue 1 </li>
+        <li class="match"><a> <span class="time">18:55</span> <span class="team">Paris - Réal</span>  <span class="nbAvis"> 5 Avis </span> </a></li>
+        <li class="match"><a>  <span class="time">14:00</span>  <span class="team"> Barça - Juventus </span>  </a> </li>
+    </ul>
+
+
+
+{% endblock %}
+
