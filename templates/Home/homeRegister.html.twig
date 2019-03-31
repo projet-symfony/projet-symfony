@@ -8,7 +8,12 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('CSS/home.css') }}">
 {% endblock %}
 
+{% block titleForm %} Inscription {% endblock %}
+    {% block form %}{{form(form)}} {% endblock %}
+    {% block register %} <button><a href="/">Se connecter</a></button> {% endblock %}
+
 {%  block body %}
+
 
     <div id="slides">
         <img src="" alt="slides">

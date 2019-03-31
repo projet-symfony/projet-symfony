@@ -10,6 +10,7 @@ namespace App\Controller;
 use App\Entity\Utilisateur;
 use App\Form\UserForm;
 use App\Repository\UtilisateurRepository;
+use App\Repository\PronostiqueurRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,15 +34,45 @@ class HomeController extends AbstractController
 
         $listUser = $repository->findAll();
         foreach($listUser as $us){
-            if ($form->get('Pseudo')->getData()==$us->getLogin() && $form->get('Password')->getData()==$us->getPassword()){
-                return $this->render('homeConnected.html.twig');
+            if ($form->get('Login')->getData()==$us->getLogin() && $form->get('Password')->getData()==$us->getPassword()){
+                return $this->render('home/homeConnected.html.twig');
              }
 
         }
 
-        return $this->render('home.html.twig',array('form'=>$form));
+        /*
+        $repository2 = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository(Pronostiqueur::class)
+        ;
+        $listprono = $repository2->printAll();
+        */
+
+        return $this->render('home/home.html.twig',array('form'=>$form->createView()));
 
     }
 
 
+    /**
+     * @Route("/register")
+     */
+    public function register(ObjectManager $om, Request $request, UtilisateurRepository $repository)
+    {
+        $user = new Utilisateur();
+        $form = $this->createForm(UserForm::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            // On enregistre notre objet $advert dans la base de données, par exemple
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->render('home/home.html.twig', array('form' => $form->createView()));
+
+        }
+
+        return $this->render('home/homeRegister.html.twig', array('form' => $form->createView()));
+    }
 }

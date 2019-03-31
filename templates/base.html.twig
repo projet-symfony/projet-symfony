@@ -31,7 +31,11 @@
 
     <div class = "leftLogin">
 
-        {{form(form)}}
+        <h4> {% block titleForm %} {%  endblock %} </h4>
+        {% block form %} {% endblock %}
+
+        {%  block register %}{% endblock %}
+
     <br /> <br />
         <h4> Top User </h4>
         <ul class="ulFirstUser">

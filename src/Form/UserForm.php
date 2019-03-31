@@ -28,7 +28,7 @@ class UserForm extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Utilisateur::class,
-            'method' => 'get',
+            'method' => 'post',
             'csrf_protection' => false
         ]);
     }
