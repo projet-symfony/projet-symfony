@@ -7,10 +7,13 @@
  */
 
 namespace App\Controller;
+use App\Entity\Utilisateur;
+use App\Form\UserForm;
+use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -20,29 +23,35 @@ class HomeController extends AbstractController
     /**
      * @Route("/")
      */
-    public function homepage(Request $request, ObjectManager $objectManager){
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+
+    public function homepage(ObjectManager $om, Request $request, UtilisateurRepository $repository){
+        $user = new Utilisateur();
+        $form   = $this->createForm(UserForm::class, $user);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
 
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository(Utilisateur::class)
+        ;
 
-            $objectManager = $this->getDoctrine()->getManager();
-            $objectManager->persist($user);
-            $objectManager->flush();
+        $listUser = $repository->findAll();
+        foreach($listUser as $us){
+            if ($form->get('Pseudo')->getData()==$us->getLogin() && $form->get('Password')->getData()==$us->getPassword()){
+                return $this->render('homeConnected.html.twig');
+             }
 
-            return $this->redirectToRoute('home');
         }
-        return $this->render('home.html.twig', [
-            'form' => $form->createView(),
-        ]);
+
+        return $this->render('home.html.twig',array('form'=>$form));
     }
 
     /**
      * @Route("/{slug}")
      */
 
-    public function read($slug){
+    public function read($slug)
+    {
         return $this->render('home.html.twig');
     }
 

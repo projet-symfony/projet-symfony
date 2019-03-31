@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    Classement
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/classement.css') }}">
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="search">
+
+        {{ form_start(form) }}
+        <div class="first">{{ form_row(form.Pays) }}</div>
+        <div class="second"> {{ form_row(form.Ligue) }}</div>
+        <div class="third"><input type="submit" value="Rechercher" /></div>
+        {{ form_end(form) }}
+
+    </div>
+    <div class="container mt-4">
+        <h1> Classement Actuel Des Clubs </h1>
+        <table class="table table-striped">
+            <thead>
+            <tr class="entete">
+                <th> Numéros </th>
+                <th> Clubs </th>
+                <th> Points </th>
+                <th> Joués </th>
+                <th> Gagnés </th>²
+                <th> Perdus </th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% set p = 0 %}
+            {% for c in clubs %}
+                {% set p = p + 1 %}
+                <tr>
+                    <td> {{ p }}</td>
+                    <td> {{ c.NomEquipe }} </td>
+                    <td> {{ c.points }} </td>
+                    <td> {{ c.nbMatchJoue }} </td>
+                    <td> {{ c.nbMatchGagne}} </td>
+                    <td> {{ c.nbMatchPerdu}} </td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        {{ knp_pagination_render(clubs) }}
+    </div>
+
+{% endblock %}
+
+

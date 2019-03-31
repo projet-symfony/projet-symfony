@@ -100,8 +100,9 @@ h3{
     border-collapse: collapse;
 }
 th,td{
-padding: 15px;
-text-align: center;}
+    padding: 15px;
+    text-align: center;
+}
 
 #face, th, td{
 
@@ -112,7 +113,8 @@ text-align: center;}
     display: inline-block;
 }
 #team2{
-        float: right;
+
+    float: right;
 }
 body .Forme{
     position:relative;

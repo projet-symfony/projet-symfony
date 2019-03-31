@@ -7,10 +7,10 @@
  */
 
 namespace App\Controller;
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class AnalyseController extends AbstractController
 {
@@ -30,8 +30,8 @@ class AnalyseController extends AbstractController
         return new Response('For All Article');
     }
 
-
     public function read($slug){
         return $this->render('article/read.html.twig');
     }
 }
+
