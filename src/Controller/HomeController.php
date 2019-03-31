@@ -75,4 +75,11 @@ class HomeController extends AbstractController
 
         return $this->render('home/homeRegister.html.twig', array('form' => $form->createView()));
     }
+
+    /**
+     * @Route("/dayprono")
+     */
+    public function dayProno(){
+        return $this->render('home/dayprono.html.twig');
+    }
 }
