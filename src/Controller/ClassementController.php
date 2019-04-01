@@ -49,7 +49,7 @@ class ClassementController extends AbstractController
 
         $clubs = $paginator->paginate($this->repository1->printAll($recherche),
             $request->query->getInt('page',1),
-            10
+            15
         );
 
 
@@ -70,7 +70,7 @@ class ClassementController extends AbstractController
 
         $pronostiqueurs = $paginator2->paginate($this->repository2->printAll(/*$recherche*/),
             $request->query->getInt('page',1),
-            10
+            20
         );
 
         return $this->render('Classement/ClassementPronostiqueur.html.twig', [
