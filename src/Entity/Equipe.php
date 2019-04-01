@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EquipeRepository")
@@ -47,27 +48,25 @@ class Equipe
     private $nbPronostique;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $Ligue;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $numero;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $points;
 
 
     public function __Construct(){
-        $this->numero = 0;
-        $this->points = 0;
+       $this->numero = 0;
+       $this->points=0;
     }
-
-
 
     public function getId(): ?int
     {
@@ -183,6 +182,10 @@ class Equipe
     }
 
 
+    public function __toString()
+    {
+       return $this->NomEquipe;
+    }
 
 
 }
