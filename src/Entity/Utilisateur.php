@@ -6,7 +6,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-
+use Cocur\Slugify\Slugify;
 
 
 /**
@@ -42,14 +42,6 @@ class Utilisateur
     private $Password;
 
 
-
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Jeu", inversedBy="ListeUtilisateurs")
-     */
-    private $ListeMatch;
-
-
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
@@ -65,16 +57,25 @@ class Utilisateur
      */
     private $nbreReussite;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Jeu", inversedBy="Jeux")
+     */
+    private $jeux;
+
+
+
     public function __construct()
     {
-        $this->ListeMatch = new ArrayCollection();
         $this->tauxReussite = 0;
+        $this->jeux = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
     }
+
+
 
     public function getNom(): ?string
     {
@@ -124,35 +125,6 @@ class Utilisateur
         return $this;
     }
 
-
-
-    /**
-     * @return Collection|Jeu[]
-     */
-    public function getListeMatch(): Collection
-    {
-        return $this->ListeMatch;
-    }
-
-    public function addListeMatch(Jeu $listeMatch): self
-    {
-        if (!$this->ListeMatch->contains($listeMatch)) {
-            $this->ListeMatch[] = $listeMatch;
-        }
-
-        return $this;
-    }
-
-    public function removeListeMatch(Jeu $listeMatch): self
-    {
-        if ($this->ListeMatch->contains($listeMatch)) {
-            $this->ListeMatch->removeElement($listeMatch);
-        }
-
-        return $this;
-    }
-
-
     public function getNbrePronostiques(): ?int
     {
         return $this->nbrePronostiques;
@@ -177,10 +149,6 @@ class Utilisateur
         return $this;
     }
 
-
-
-
-
     public function getNbreReussite(): ?int
     {
         return $this->nbreReussite;
@@ -193,6 +161,31 @@ class Utilisateur
         return $this;
     }
 
+    /**
+     * @return Collection|Jeu[]
+     */
+    public function getJeux(): Collection
+    {
+        return $this->jeux;
+    }
+
+    public function addJeux(Jeu $jeux): self
+    {
+        if (!$this->jeux->contains($jeux)) {
+            $this->jeux[] = $jeux;
+        }
+
+        return $this;
+    }
+
+    public function removeJeux(Jeu $jeux): self
+    {
+        if ($this->jeux->contains($jeux)) {
+            $this->jeux->removeElement($jeux);
+        }
+
+        return $this;
+    }
 
 
 }

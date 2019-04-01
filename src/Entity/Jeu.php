@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MatchRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\JeuRepository")
  */
 class Jeu
 {
@@ -20,8 +20,6 @@ class Jeu
      * @ORM\Column(type="integer")
      */
     private $id;
-
-
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -56,13 +54,16 @@ class Jeu
     private $idEquipe2;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", mappedBy="ListeMatch")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", mappedBy="jeux")
      */
-    private $ListeUtilisateurs;
+    private $Utilisateurs;
+
+
+
 
     public function __construct()
     {
-        $this->ListeUtilisateurs = new ArrayCollection();
+        $this-> Utilisateurs = new ArrayCollection();
     }
 
 
@@ -145,36 +146,37 @@ class Jeu
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->Lieu;
+    }
+
     /**
      * @return Collection|Utilisateur[]
      */
-    public function getListeUtilisateurs(): Collection
+    public function getUtilisateurs(): Collection
     {
-        return $this->ListeUtilisateurs;
+        return $this->Utilisateurs;
     }
 
-    public function addListeUtilisateur(Utilisateur $listeUtilisateur): self
+    public function addJeux(Utilisateur $Utilisateurs): self
     {
-        if (!$this->ListeUtilisateurs->contains($listeUtilisateur)) {
-            $this->ListeUtilisateurs[] = $listeUtilisateur;
-            $listeUtilisateur->addListeMatch($this);
+        if (!$this->Jeux->contains($Utilisateurs)) {
+            $this->Jeux[] = $Utilisateurs;
+            $Utilisateurs->addJeux($this);
         }
 
         return $this;
     }
 
-    public function removeListeUtilisateur(Utilisateur $listeUtilisateur): self
+    public function removeJeux(Utilisateur $Utilisateurs): self
     {
-        if ($this->ListeUtilisateurs->contains($listeUtilisateur)) {
-            $this->ListeUtilisateurs->removeElement($listeUtilisateur);
-            $listeUtilisateur->removeListeMatch($this);
+        if ($this->Jeux->contains($Utilisateurs)) {
+            $this->Jeux->removeElement($Utilisateurs);
+            $Utilisateurs->removeJeux($this);
         }
 
         return $this;
     }
-
-
-
-
 
 }

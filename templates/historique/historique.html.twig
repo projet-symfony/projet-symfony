@@ -1,0 +1,38 @@
+{%  extends "base.html.twig" %}
+
+{% block title  %}
+   Historique
+{% endblock %}
+
+
+{%  block body %}
+
+   <!-- <div class="body" style="width:65.9%; border: none;">
+
+       <p><span id="utilisateur"></span> a pronostiqué pour le match <span id="jeu"></span> à <span id="horaire"></span></p>
+
+    </div>-->
+    <div class="container" style="padding-left: 200px;">
+        <div class="row flex">
+            <h2>Les dernières activités</h2>
+            {% for al in all %}
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+
+                                <p class="card-text">
+                                    <a href="{{ path('profile.show',{ id: al.id } ) }}">{{ al.Prenom }}</a> a pronostiqué pour le match
+                                    <a href="#">{{ al.NomEquipe }} contre  {{ al.NomEquipe }} </a>
+                                    en choisissant {{ al.numPronostique }}
+                                    à  {{  al.heure|date('H:i:s')  }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
