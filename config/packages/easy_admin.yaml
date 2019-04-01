@@ -1,0 +1,21 @@
+easy_admin:
+    site-name: 'Mise à jour'
+    entities:
+        Administrateur:
+            class: App\Entity\Administrateur
+            templates:
+                edit: 'admin/edit_admin.html.twig'
+            list:
+                fields: ['Nom','Prenom']
+                action:
+                    - {name: 'edit', icon: 'pencil',  css class: 'btn btn-secondary', title: 'edit' }
+                    - {name: 'delete', icon: 'trash', label: false, css class: 'btn btn-danger' }
+
+        Utilisateur:
+            class: App\Entity\Utilisateur
+        Equipe:
+            class: App\Entity\Equipe
+        Jeu:
+            class: App\Entity\Jeu
+
+
