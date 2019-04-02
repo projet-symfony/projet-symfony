@@ -9,6 +9,7 @@
 namespace App\Controller;
 use App\Entity\Utilisateur;
 use App\Form\UserForm;
+use App\Repository\JeuRepository;
 use App\Repository\UtilisateurRepository;
 use App\Repository\PronostiqueurRepository;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -18,6 +19,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
 {
+
+    private $repository ;
+    private $em;
+    public function __construct(JeuRepository $repository, ObjectManager $em)
+    {
+        $this->repository = $repository;
+        $this->em = $em;
+    }
     /**
      * @Route("/")
      */
@@ -80,6 +89,8 @@ class HomeController extends AbstractController
      * @Route("/dayprono")
      */
     public function dayProno(){
-        return $this->render('home/dayprono.html.twig');
+        $jeu = $this->repository->printAll();
+        return $this->render('home/dayprono.html.twig', [
+            'jeu' => $jeu]);
     }
 }
