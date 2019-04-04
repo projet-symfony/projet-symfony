@@ -24,18 +24,12 @@
                 <a href="{{ path('classementclub') }}">Equipes</a>
             </div>
         </li>
-        <li class="menu"> <a href="{{ path('historique_index') }}"> HISTORIQUE </a></li>
+        <li class="menu"> <a href="historique"> HISTORIQUE </a></li>
     </ul>
 
 </header>
 
 <div class = "leftLogin">
-
-    <h4> {% block titleForm %} {%  endblock %} </h4>
-    {% block form %} {% endblock %}
-
-    {%  block register %}{% endblock %}
-
     <br /> <br />
     <h4> Top User </h4>
     <ul class="ulFirstUser">
@@ -49,6 +43,31 @@
             </li>
         {% endfor %}
 
+
+       {# <li>
+            <span id="nbUser"> 2 </span>
+            <img alt="photoUser">
+            <span id="nameUser"> MehdiStl</span>
+        </li>
+
+        <li>
+            <span id="nbUser"> 3 </span>
+            <img alt="photoUser">
+            <span id="nameUser"> MehdiStl</span>
+        </li>
+
+        <li>
+            <span id="nbUser"> 4 </span>
+            <img alt="photoUser">
+            <span id="nameUser"> MehdiStl</span>
+        </li>
+
+        <li id="LastUser">
+            <span id="nbUser"> 5 </span>
+            <img alt="photoUser">
+            <span id="nameUser"> MehdiStl</span>
+        </li>#}
+
     </ul>
 </div>
 
@@ -60,19 +79,13 @@
 
 <footer>
     <p>NextTipster</p>
-    <a href="{{ path('info') }}" >Qui sommes nous ?</a>
-    <a href="{{ path('contacte') }}">Nous contacter</a>
-    <a href="{{ path('plan') }}">Plan du site</a>
-    <a href="{{ path('mention') }}">Mentions légales</a>
-
+    <a>Qui sommes nous ?</a>
+    <a>Nous contacter</a>
+    <a>Plan du site</a>
+    <a>Mentions légales</a>
+    <a>FAQ</a>
 </footer>
-
-
-
-
-
 </body>
-
 
 </html>
 
