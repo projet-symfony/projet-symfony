@@ -23,12 +23,19 @@ class UtilisateurRepository extends ServiceEntityRepository
 
 
     public function printAll(/*RechercheClassementUtilisateur $recherche*/){
-       return $this->createQueryBuilder('u')
+        return $this->createQueryBuilder('u')
             ->orderBy('u.tauxReussite' , 'DESC')
             ->getQuery()
             ->getResult();
 
         //return $query->getQuery();
+    }
+
+    public function printJustFive(){
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.tauxReussite' , 'DESC')
+            ->setMaxResults(5)
+            ;
     }
 
     public function findByPercentage(){
