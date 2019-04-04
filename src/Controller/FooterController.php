@@ -21,7 +21,7 @@ class FooterController extends AbstractController
     private $repository ;
     private $em;
 
-    public function __construct(contacteRepository $repository, ObjectManager $em)
+   public function __construct(contacteRepository $repository, ObjectManager $em)
     {
         $this->repository = $repository;
          $this->em = $em;
@@ -42,8 +42,8 @@ class FooterController extends AbstractController
      * @Route("/footer/footer", name="footer")
      */
     public function  index(Request $request){
-    $name = $request->get("nom");
-      $message = $request->get("msg");
+   $name = $request->get("nom");
+    $message = $request->get("msg");
       $email = $request->get("mail");
      $pseudoForum = $request->get("pseudo");
       $sujet = $request->get("sujet");
