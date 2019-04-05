@@ -35,6 +35,8 @@ class UtilisateurRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('u')
             ->orderBy('u.tauxReussite' , 'DESC')
             ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
             ;
     }
 

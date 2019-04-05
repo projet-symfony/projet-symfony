@@ -30,39 +30,23 @@
 </header>
 
 <div class = "leftLogin">
+    <h4> {% block titleForm %} {%  endblock %} </h4>
+    {% block form %} {% endblock %}
+
+    {%  block register %}{% endblock %}
+
     <br /> <br />
     <h4> Top User </h4>
+    {% set n = 0  %}
     <ul class="ulFirstUser">
-        <li id="FirstUser">
-            <span id="nbUser"> 1 </span>
-            <img alt="photoUser">
-            <span id="nameUser"> MehdiStl</span>
-        </li>
-
-        <li>
-            <span id="nbUser"> 2 </span>
-            <img alt="photoUser">
-            <span id="nameUser"> MehdiStl</span>
-        </li>
-
-        <li>
-            <span id="nbUser"> 3 </span>
-            <img alt="photoUser">
-            <span id="nameUser"> MehdiStl</span>
-        </li>
-
-        <li>
-            <span id="nbUser"> 4 </span>
-            <img alt="photoUser">
-            <span id="nameUser"> MehdiStl</span>
-        </li>
-
-        <li id="LastUser">
-            <span id="nbUser"> 5 </span>
-            <img alt="photoUser">
-            <span id="nameUser"> MehdiStl</span>
-        </li>
-
+        {% for p in pronostiqueurs5 %}
+            {% set n = n+1 %}
+            <li id="FirstUser">
+                <span id="nbUser"> {{ n }} </span>
+                <img alt="photoUser">
+                <span id="nameUser"> {{ p.Prenom~" "~p.Nom }}</span>
+            </li>
+        {% endfor %}
     </ul>
 </div>
 
