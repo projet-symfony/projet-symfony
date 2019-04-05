@@ -43,13 +43,10 @@ class HomeController extends AbstractController
             ->getRepository(Utilisateur::class)
         ;
 
-        $repository2 = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository(Utilisateur::class)
-        ;
 
-        $pronostiqueurs5 = $repository2->printJustFive();
+
+        $pronostiqueurs5 = $this->repository2->printJustFive();
+
 
         $listUser = $repository->findAll();
         foreach($listUser as $us){

@@ -19,7 +19,7 @@ class FooterController extends AbstractController
 {
 
     private $repository ;
-    private $em;
+    private $em ;
 
 
     /* public function __construct(contacteRepository $repository, ObjectManager $em)
@@ -27,6 +27,7 @@ class FooterController extends AbstractController
          $this->repository = $repository;
           $this->em = $em;
      }*/
+
 
     /**
      * @Route("/footer/info" ,name="info")
@@ -43,6 +44,7 @@ class FooterController extends AbstractController
     /**
      * @Route("/footer/footer", name="footer")
      */
+
 
     /*public function  index(Request $request){
         $name = $request->get("nom");
@@ -62,6 +64,7 @@ class FooterController extends AbstractController
         return $this->render('footer/message.html.twig',["name"=>$name,
         "message"=>"ttttttttt"]);
     }*/
+
 
     /**
      * @Route("/footer/plan" ,name="plan")

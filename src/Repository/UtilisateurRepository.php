@@ -37,7 +37,7 @@ class UtilisateurRepository extends ServiceEntityRepository
             ->setMaxResults(5)
             ->getQuery()
             ->getResult();
-            ;
+
     }
 
     public function findByPercentage(){

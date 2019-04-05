@@ -33,8 +33,9 @@
 <div class = "leftLogin">
     <br /> <br />
     <h4> Top User </h4>
+    {% set n = 0 %}
     <ul class="ulFirstUser">
-        {% set n=0 %}
+
         {% for pro in pronostiqueurs5 %}
             {% set n = n+1 %}
             <li id="FirstUser">
