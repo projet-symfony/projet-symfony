@@ -38,38 +38,22 @@
 
     <br /> <br />
         <h4> Top User </h4>
+
+        {% set i = 0 %}
         <ul class="ulFirstUser">
-            <li id="FirstUser">
-                <span id="nbUser"> 1 </span>
-                <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
-            </li>
+            {% for pr in pronostiqueurs5 %}
+                {% set i = i+1 %}
+                <li id="FirstUser">
+                    <span id="nbUser"> {{ i }}</span>
+                    <img alt="photoUser">
+                    <span id="nameUser"> {{ pr.Prenom~" "~pr.Nom }} </span>
+                </li>
 
-            <li>
-                <span id="nbUser"> 2 </span>
-                <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
-            </li>
-
-            <li>
-                <span id="nbUser"> 3 </span>
-                <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
-            </li>
-
-            <li>
-                <span id="nbUser"> 4 </span>
-                <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
-            </li>
-
-            <li id="LastUser">
-                <span id="nbUser"> 5 </span>
-                <img alt="photoUser">
-                <span id="nameUser"> MehdiStl</span>
-            </li>
-
+            {% endfor %}
         </ul>
+
+
+
     </div>
 
     <div class="body">

@@ -30,11 +30,13 @@ class ClassementController extends AbstractController
     private $em;
     private $repository1;
     private $repository2;
+    private $repository3;
 
-    public function __Construct(EquipeRepository $repository1, UtilisateurRepository $repository2,ObjectManager $em){
+    public function __Construct(EquipeRepository $repository1, UtilisateurRepository $repository2,  UtilisateurRepository $repository3, ObjectManager $em){
         $this->em = $em;
         $this->repository1 = $repository1;
         $this->repository2 = $repository2;
+        $this->repository3 = $repository3;
     }
 
     /**
@@ -52,9 +54,12 @@ class ClassementController extends AbstractController
             15
         );
 
+        $pronostiqueurs5 = $this->repository3->printJustFive();
+
 
         return $this->render('Classement/ClassementClub.html.twig', [
             'clubs' => $clubs,
+            'pronostiqueurs5' => $pronostiqueurs5,
             'form' => $form->createView()
         ]);
     }
@@ -73,9 +78,11 @@ class ClassementController extends AbstractController
             20
         );
 
+        $pronostiqueurs5 = $this->repository3->printJustFive();
+
         return $this->render('Classement/ClassementPronostiqueur.html.twig', [
             'pronostiqueurs' => $pronostiqueurs,
-            //'form' => $form->createView()
+            'pronostiqueurs5' => $pronostiqueurs5
         ]);
 
 
