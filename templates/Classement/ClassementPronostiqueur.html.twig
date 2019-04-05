@@ -21,7 +21,9 @@
             <tr class="entete">
                 <th> Noms </th>
                 <th> NP </th>
+                <th> NR </th>
                 <th> TR </th>
+
             </tr>
             </thead>
             <tbody>
@@ -29,14 +31,19 @@
             {% for p in pronostiqueurs %}
 
                 <tr>
-                    <td> {{ p.Nom }}</td>
+                    <td> {{ p.Prenom ~" "~ p.Nom }}</td>
                     <td> {{ p.nbrePronostiques }} </td>
+                    <td> {{ p.nbreReussite }} </td>
                     <td> {{ p.tauxReussite ~ "%" }} </td>
                 </tr>
 
             {% endfor %}
             </tbody>
         </table>
+    </div>
+
+    <div class="pagination">
+        {{ knp_pagination_render(pronostiqueurs) }}
     </div>
 
 {% endblock %}
