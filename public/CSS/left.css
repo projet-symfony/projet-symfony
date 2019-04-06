@@ -1,5 +1,5 @@
 .leftLogin {
-    height:200%;
+    height:150%;
     width:20%;
     border: 1px solid black;
     float:left;
@@ -74,4 +74,6 @@ h4{
     background-color:white;*/
     margin-left: 1px;
     margin-top: 5px;
+    width: 70%;
+    border:solid 1px;
 }
