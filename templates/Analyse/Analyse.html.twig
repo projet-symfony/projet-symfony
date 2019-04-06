@@ -12,7 +12,8 @@
     {%  block body %}
         <h2> ANALYSE DE MATCH</h2>
         <hr class="separator">
-            <ul>
+
+        <ul>
                 <li>
 
                     <p class="detailMatch"> {{ jeu.heure|date('H:i:s') }} {{ jeu.date|date('Y-m-d') }} à {{ jeu.Lieu }}</p>
@@ -33,113 +34,85 @@
 
 
 
-
-
         <div class="stade">
             <img src="" alt="stade">
         </div>
         <h3> Classement Actuel Des Clubs </h3>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th> Numéros </th>
-                <th> Clubs </th>
-                <th> Points </th>
-                <th> Joués </th>
-                <th> Gagnés </th>²
-                <th> Nuls </th>
-                <th> Perdus </th>
+        <div class="container mt-4">
 
-            </tr>
-            </thead>
+            <table class="table table-striped">
+                <thead>
+                <tr class="entete">
+                    <th> Clubs </th>
+                    <th> Points </th>
+                    <th> Joués </th>
+                    <th> Gagnés </th>²
+                    <th> Perdus </th>
 
-        </table>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                    <td> {{ jeu.getIdEquipe1().NomEquipe }} </td>
+                    <td> {{ jeu.getIdEquipe1().points }} </td>
+                    <td> {{ jeu.getIdEquipe1().nbMatchJoue }} </td>
+                    <td> {{jeu.getIdEquipe1().nbMatchGagne}} </td>
+                    <td> {{ jeu.getIdEquipe1().nbMatchPerdu}} </td>
+                </tr>
+                <tr>
+
+                    <td> {{ jeu.getIdEquipe2().NomEquipe }} </td>
+                    <td> {{ jeu.getIdEquipe2().points }} </td>
+                    <td> {{ jeu.getIdEquipe2().nbMatchJoue }} </td>
+                    <td> {{jeu.getIdEquipe2().nbMatchGagne}} </td>
+                    <td> {{ jeu.getIdEquipe2().nbMatchPerdu}} </td>
+                </tr>
+
+
+                </tbody>
+            </table>
         </div>
         <h3> Forme </h3>
         <div class="Forme">
             <table id="team1">
-                <tr>
-                    <th>team1</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
+                <thead>
+                <tr class="entete">
+                    <th> Club </th>
+                    <th> score</th>
+                    <th> club</th>
 
                 </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>0</td>
-                    <td>pt</td>
-
-                </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>0</td>
-                    <td>pt</td>
-
-                </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>0</td>
-                    <td>pt</td>
-
-                </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>0</td>
-                    <td>pt</td>
-
-                </tr>
+                </thead>
+                {% for j in equipe1 %}
+                    <tbody>
+                    <tr>
+                        <td> {{ j.getIdEquipe1().NomEquipe }} </td>
+                        <td> {{ j.score}} </td>
+                        <td> {{ j.getIdEquipe2().NomEquipe }} </td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
             </table>
             <table id="team2">
-                <tr>
-                    <th>team2</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
+                <thead>
+                <tr class="entete">
+                    <th> Club </th>
+                    <th> score</th>
+                    <th> club</th>
 
                 </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
+                </thead>
+                {% for e in equipe2 %}
+                    <tbody>
+                    <tr>
+                        <td> {{ e.getIdEquipe1().NomEquipe }} </td>
+                        <td> {{ e.score}} </td>
+                        <td> {{ e.getIdEquipe2().NomEquipe }} </td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
 
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
             </table>
 
 
@@ -147,46 +120,18 @@
         <h3> Face à Face </h3>
         <div class="Face">
             <table id="face">
+
+                <tbody>
                 <tr>
-                    <th>team2</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
+
+                    <td> {{ jeu.getIdEquipe1().NomEquipe }} </td>
+                    <td> {{ jeu.score}} </td>
+                    <td> {{ jeu.getIdEquipe2().NomEquipe }} </td>
 
                 </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
 
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
+                </tbody>
 
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
             </table>
 
         </div>
@@ -234,24 +179,7 @@
 
 
                 </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
 
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-
-
-                </tr>
             </table>
         </div>
 

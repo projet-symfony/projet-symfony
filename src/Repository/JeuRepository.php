@@ -32,7 +32,15 @@ class JeuRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function AllEquipe($Equipe,$id)
+    {
+        $query = "select j from App\Entity\Jeu j where j.".$Equipe."=".$id;
+        $q = $this->_em->createQuery($query)
+            ->setMaxResults(5);
 
+        return $q->getResult();
+        //return $this->findBy([$Equipe=>$id]);
+    }
     // /**
     //  * @return Jeu[] Returns an array of Jeu objects
     //  */
@@ -61,17 +69,21 @@ class JeuRepository extends ServiceEntityRepository
               ->getResult()
           ;
       }*/
-    public function findAllId($id): array
+    public function findAllId()
     {
-        $entityManager = $this->getEntityManager();
+      //  return $this->createQueryBuilder('J')
+       // ->getQuery()
+       // ->getResult();
 
-        $query = $entityManager->createQuery(
-            'SELECT J
-        FROM App\Entity\Jeu
-        WHERE J.id = :id'
-        )->setParameter('id', $id);
+        //$entityManager = $this->getEntityManager();
+
+        //$query = $entityManager->createQuery(
+         //   'SELECT J
+        //FROM App\Entity\Jeu
+        //WHERE J.id = :id'
+        //)->setParameter('id', $id);
 
         // returns an array of Product objects
-        return $query->execute();
+        //return $query->execute();
     }
 }

@@ -28,8 +28,10 @@ class AnalyseController extends AbstractController
     public function analysePage(Request $request){
 
         $jeu = $this->repository->find($request->query->get('id'));
+       $equipe1 = $this->repository->AllEquipe('idEquipe1',$request->query->get('Equipe1'));
+        $equipe2 = $this->repository->AllEquipe('idEquipe2',$request->query->get('Equipe2'));
         return $this->render('Analyse/Analyse.html.twig', [
-            'jeu' => $jeu]);
+            'jeu' => $jeu, 'equipe1'=>$equipe1, 'equipe2'=>$equipe2]);
 
     }
     /**
