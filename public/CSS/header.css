@@ -1,18 +1,20 @@
-#banner{
-    border:1px solid;
-    width:100%;
-    height:15%;
+#baniere{
+
+    position: absolute;
+    top:-59px;
+    left: 100px;
+    color: #263238;
+    font-size: 50px;
+    font-family: Helvetica;
+    font-weight: 900;
 }
-
 .ulMenu {
-
     border: solid 1px black;
-    border-top :none;
     list-style-type: none;
-    margin: 0;
+    margin: -3px;
     padding: 0;
     overflow: hidden;
-    background-color: #5472AE;
+    background-color: #37474F;
 }
 
 .menu {

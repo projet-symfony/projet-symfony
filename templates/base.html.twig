@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('CSS/header.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('CSS/left.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('CSS/footer.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/home.css') }}">
     {% block stylesheets %}{% endblock %}
 </head>
 
@@ -14,7 +15,7 @@
 <header>
     <div id="banner">
         <img src="images/banner.jpg" alt="banniere" width="100%" height="250px">
-        <p style="position: absolute; top:-59px; left: 100px; color: #263238; font-size: 50px; font-family: Helvetica; font-weight: 900;">Pronostiquez pour vos meilleurs équipes</p>
+        <p id="baniere">Pronostiquez pour vos meilleurs équipes</p>
     </div>
 
     <ul class="ulMenu">
@@ -37,27 +38,24 @@
 
     {%  block register %}{% endblock %}
 
-    <br /> <br />
+    <h4 id="topUser"> Les top 5 utilisateurs</h4>
+    {%  set n = 0  %}
 
-    <h4> Top User </h4>
-    {% set n = 0  %}
     <ul class="ulFirstUser">
-        {% for p in pronostiqueurs5 %}
-            {% set n = n+1 %}
-            <li id="FirstUser">
-                <span id="nbUser"> {{ n }} </span>
-                <img alt="photoUser">
-                <span id="nameUser"> {{ p.Prenom~" "~p.Nom }}</span>
-            </li>
+        {%  for p in pronostiqueurs5 %}
+        <li id="user">
+            {%  set n = n+1 %}
+           <span id="num"> {{ n }}</span> <a href="#" style="text-decoration: none; color:#37474F;"> <span id="infoUser"> {{ p.Prenom~" "~p.Nom }}</span> </a>
+        </li>
         {% endfor %}
     </ul>
+
 </div>
 
 <div class="body">
     {% block body %}{% endblock %}
-
 </div>
-
+<!--
 <footer>
     <p>NextTipster</p>
     <a>Qui sommes nous ?</a>
@@ -65,8 +63,10 @@
     <a>Plan du site</a>
     <a>Mentions légales</a>
     <a>FAQ</a>
-</footer>
+</footer>-->
 </body>
-
+<script>
+    var blink_speed = 500; var t = setInterval(function () { var ele = document.getElementById('topUser'); ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden'); }, blink_speed);
+</script>
 </html>
 
