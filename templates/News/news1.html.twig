@@ -1,0 +1,36 @@
+{%  extends "base.html.twig" %}
+
+{% block title  %}
+   Lyon
+{% endblock %}
+
+{%  block stylesheets %}
+   {{ parent() }}
+{% endblock %}
+
+
+
+{% block titleForm %} Login {% endblock %}
+{% block form %}{{form(form)}} {% endblock %}
+{% block register %} <button><a href="/register">S'inscrire</a></button> {% endblock %}
+
+
+
+{%  block body %}
+<div style="text-align: center; width: 50%;">
+   <h1 style="color: blue;">OL : fracture ouverte avec les supporters après la défaite contre Dijon</h1>
+   <img src="images/30d4b.jpg" style="width:50%; height: 200px; margin-left: 180px; margin-top: 10px;">
+   <p> Publié le samedi 6 avril 2019 à 23:53 </p>
+   <p>   Après l'élimination en demi-finales de Coupe de France mardi, la défaite contre Dijon a
+         crispé un peu plus les supporters lyonnais, chambreurs et contestataires au cours d'un après-midi tendu.
+   </p>
+   <p>
+      Emprunté au chant populaire Vive le vent d'hiver, l'air joyeux tranchait avec des propos
+      beaucoup plus acerbes. « Vive le ven, vive le ven, vive le vendredi ! Le mardi, on est mauvais,
+      le samedi aussi ! » Entonné par le Kop Virage Nord du Groupama Stadium, ce remix ironique a rythmé la fin
+      d'une semaine terrible pour l'Olympique Lyonnais.
+   </p>
+</div>
+
+{% endblock body %}
+

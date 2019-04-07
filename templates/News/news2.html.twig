@@ -1,0 +1,35 @@
+{%  extends "base.html.twig" %}
+
+{% block title  %}
+   Les verres
+{% endblock %}
+
+{%  block stylesheets %}
+   {{ parent() }}
+{% endblock %}
+
+
+
+{% block titleForm %} Login {% endblock %}
+{% block form %}{{form(form)}} {% endblock %}
+{% block register %} <button><a href="/register">S'inscrire</a></button> {% endblock %}
+
+
+
+{%  block body %}
+<div style="text-align: center; width: 50%;">
+   <h1 style="color: blue;">Amiens - Saint-Étienne : 2-2</h1>
+   <img src="images/b58a6.jpg" style="width:50%; height: 200px; margin-left: 180px; margin-top: 10px;">
+  <p> Après les défaites de Marseille à Bordeaux vendredi (0-2) et de Lyon contre Dijon samedi après-midi (1-3),
+   Saint-Étienne avait l'occasion de conforter sa quatrième place, de distancer l'OM et de se rapprocher de Lyon.
+   Avec le retour de Khazri, les Verts, après une bonne intervention de Gurtner devant Beric, ont pris les devants grâce
+   à Kolodziejczak (16e). Sur un corner de Khazri, il a sauté plus haut que Pieters. Mais Amiens a vite réagi. Après un
+   superbe arrêt de Ruffier sur une tête de Gnahoré (21e), Konaté, bien lancé en profondeur, a dribblé le gardien stéphanois
+   pour égaliser (24e). L'arbitre, Éric Wattelier, a ensuite consulté le VAR et l'écran au bord du terrain pour sanctionner
+   une faute de Jordan Lefort sur Arnaud Nordin à l'extrême limite de la surface. Le défenseur a été expulsé (32e) et Gurtner
+   a dévié sur sa barre le coup franc qui a suivi de Khazri (33e).</p>
+
+</div>
+
+{% endblock body %}
+
