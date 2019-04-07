@@ -50,7 +50,10 @@ class HomeController extends ForAllController
             ->getRepository(Utilisateur::class)
         ;
 
-        $pronostiqueurs5 = $this->repository2->printJustFive();
+
+
+
+
 
         $repository2 = $this
             ->getDoctrine()
@@ -58,12 +61,15 @@ class HomeController extends ForAllController
             ->getRepository(Jeu::class)
         ;
         $listMatch = $repository2->findAllMatch();
-      
+
         $listUser = $repository->findAll();
         foreach($listUser as $us){
             if ($form->get('Login')->getData()==$us->getLogin() && $form->get('Password')->getData()==$us->getPassword()){
                 return $this->render('home/homeConnected.html.twig',[
-                    'pronostiqueurs5' => $this->pronostiqueurs5
+
+                    'pronostiqueurs5' => $this->pronostiqueurs5,
+                    'match' => $listMatch
+
                 ]);
             }
 
@@ -72,10 +78,9 @@ class HomeController extends ForAllController
 
 
         return $this->render('home/home.html.twig', [
-            'pronostiqueurs5' => $pronostiqueurs5,
+            'pronostiqueurs5' => $this->pronostiqueurs5,
             'form'=>$form->createView(),
             'match' => $listMatch
-
         ]);
 
     }
