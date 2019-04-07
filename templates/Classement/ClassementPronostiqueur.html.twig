@@ -5,15 +5,13 @@
 {% endblock %}
 
 {% block stylesheets %}
-    {{ parent() }}
+
     <link rel="stylesheet" type="text/css" href="{{ asset('CSS/classement.css') }}">
 {% endblock %}
 
-{% block header %}
-    {{ parent() }}
-{% endblock %}
+
 {% block body %}
-    {{ parent() }}
+
     <div class="container mt-4">
         <h1> Classement Actuel Des Pronostiqueurs </h1>
         <table class="table table-striped">

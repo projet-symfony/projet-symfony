@@ -11,8 +11,16 @@ Nextipster
 
 
 {% block titleForm %} Login {% endblock %}
-{% block form %}{{form(form)}} {% endblock %}
-{% block register %} <button><a href="/register">S'inscrire</a></button> {% endblock %}
+{% block form %}
+    {{ form_start(form) }}
+
+
+    <div class="login">{{ form_row(form.Login, {'label': 'Username'}) }}</div>
+    <div class="password">{{ form_row(form.Password, {'label': 'Password'}) }}</div>
+    <div class="valider"><input type="submit" value="Valider" /></div>
+    {{ form_end(form) }}
+{% endblock %}
+{% block register %}<div class="inscription"> <a style="text-decoration: none; border: 1px groove black; height: 20px; background-color: #b9bbbe;" href="/register">S'inscrire</a></div> {% endblock %}
 
 
 
@@ -21,18 +29,18 @@ Nextipster
     <div class="slideshow-container">
 
         <div class="mySlides fade">
-            <img src="images/30d4b.jpg" style="width:70%; height: 200px; margin-left: 50px; margin-top: 10px;">
-            <div class="text"> <a href="#"> ENTRE LYON ET SON PUBLIC, UNE FRACTURE OUVERTE</a></div>
+            <img src="images/30d4b.jpg" style="width:50%; height: 200px; margin-left: 180px; margin-top: 10px;">
+            <div class="text"> <a href="{{ path('news1') }}"> ENTRE LYON ET SON PUBLIC</a></div>
         </div>
 
         <div class="mySlides fade">
-            <img src="images/b58a6.jpg" style="width:70%; height: 200px; margin-left: 50px; margin-top: 10px;">
-            <div class="text"><a href="#"> LES VERRES ARRACHENT UN POINT </a></div>
+            <img src="images/b58a6.jpg" style="width:50%; height: 200px; margin-left: 180px; margin-top: 10px;">
+            <div class="text"><a href="{{ path('news2') }}"> LES VERRES ARRACHENT UN POINT </a></div>
         </div>
 
         <div class="mySlides fade">
-            <img src="images/fc834.jpg" style="width:70%; height: 200px; margin-left: 50px; margin-top: 10px;">
-            <div class="text"><a href="#" class="text"> MERCADAL : " TOUJOURS EN VIE "</a></div>
+            <img src="images/fc834.jpg" style="width:50%; height: 200px; margin-left: 180px; margin-top: 10px;">
+            <div class="text"><a href="{{ path('news3') }}" class="text"> MERCADAL : " TOUJOURS EN VIE "</a></div>
         </div>
 
     </div>

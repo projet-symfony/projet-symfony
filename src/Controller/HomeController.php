@@ -7,6 +7,7 @@
  */
 
 namespace App\Controller;
+use App\Controller\ForAllController;
 use App\Entity\Jeu;
 use App\Entity\Utilisateur;
 use App\Form\UserForm;
@@ -18,17 +19,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
+class HomeController extends ForAllController
 {
 
     private $repository ;
+    private $pronostiqueurs5;
     private $repository2;
+
+
+
     private $em;
-    public function __construct(JeuRepository $repository, UtilisateurRepository $repository2, ObjectManager $em)
+    public function __construct(JeuRepository $repository, ObjectManager $em, UtilisateurRepository $repository2)
     {
         $this->repository = $repository;
-        $this->repository2 = $repository2;
         $this->em = $em;
+        $this->repository2 = $repository2;
+        $this->pronostiqueurs5 = $this->renderForAll($repository2);
     }
     /**
      * @Route("/")
@@ -44,8 +50,6 @@ class HomeController extends AbstractController
             ->getRepository(Utilisateur::class)
         ;
 
-
-
         $pronostiqueurs5 = $this->repository2->printJustFive();
 
         $repository2 = $this
@@ -54,26 +58,18 @@ class HomeController extends AbstractController
             ->getRepository(Jeu::class)
         ;
         $listMatch = $repository2->findAllMatch();
-
-
+      
         $listUser = $repository->findAll();
         foreach($listUser as $us){
             if ($form->get('Login')->getData()==$us->getLogin() && $form->get('Password')->getData()==$us->getPassword()){
                 return $this->render('home/homeConnected.html.twig',[
-                    'pronostiqueurs5' => $pronostiqueurs5, 'match' => $listMatch
+                    'pronostiqueurs5' => $this->pronostiqueurs5
                 ]);
             }
 
         }
 
-        /*
-        $repository2 = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository(Pronostiqueur::class)
-        ;
-        $listprono = $repository2->printAll();
-        */
+
 
         return $this->render('home/home.html.twig', [
             'pronostiqueurs5' => $pronostiqueurs5,
@@ -96,7 +92,7 @@ class HomeController extends AbstractController
             ->getRepository(Utilisateur::class)
         ;
 
-        $pronostiqueurs5 = $repository2->printJustFive();
+
 
         $user = new Utilisateur();
         $form = $this->createForm(UserForm::class, $user);
@@ -110,13 +106,13 @@ class HomeController extends AbstractController
 
             return $this->render('home/home.html.twig', [
                 'form' => $form->createView(),
-                'pronostiqueurs5' => $pronostiqueurs5,
+                'pronostiqueurs5' => $this->pronostiqueurs5
             ]);
 
         }
 
         return $this->render('home/homeRegister.html.twig', [
-            'pronostiqueurs5' => $pronostiqueurs5,
+            'pronostiqueurs5' => $this->pronostiqueurs5,
             'form' => $form->createView()
         ]);
     }
@@ -131,11 +127,11 @@ class HomeController extends AbstractController
             ->getRepository(Utilisateur::class)
         ;
 
-        $pronostiqueurs5 = $repository2->printJustFive();
+
 
         $jeu = $this->repository->printAll();
         return $this->render('home/dayprono.html.twig', [
-            'pronostiqueurs5' => $pronostiqueurs5,
+            'pronostiqueurs5' => $this->pronostiqueurs5,
             'jeu' => $jeu]);
     }
 }

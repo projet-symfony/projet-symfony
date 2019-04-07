@@ -3,8 +3,6 @@ easy_admin:
     entities:
         Administrateur:
             class: App\Entity\Administrateur
-            templates:
-                edit: 'admin/edit_admin.html.twig'
             list:
                 fields: ['Nom','Prenom']
                 action:

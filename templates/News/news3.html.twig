@@ -1,0 +1,27 @@
+{%  extends "base.html.twig" %}
+
+{% block title  %}
+   Les verres
+{% endblock %}
+
+{%  block stylesheets %}
+   {{ parent() }}
+{% endblock %}
+
+{%  block body %}
+<div style="text-align: center; width: 100%;color: blue;">
+   <h1 style="color: blue;">Fabien Mercadal (Caen) : «On est toujours en vie»</h1>
+   <img src="{{ asset('images/fc834.jpg') }}" style="width:50%; height: 200px; margin-left: 10px; margin-top: 10px;">
+   <p>
+      Fabien Mercadal (entraîneur Caen, battu 2-0 à Nîmes) : « On voulait faire un match solide.
+      On a presque réussi notre coup avant de craquer... un peu trop tard à cinq minutes de la fin.
+      C'était trop court pour espérer pouvoir égaliser, c'est rageant. Jusque-là, on avait été sérieux,
+      compacts, avec une bonne charnière défensive, mais on n'a peut-être pas su assez peser offensivement.
+      On a beaucoup donné, peut-être de façon maladroite, le contenu n'a pas non plus été trop mauvais.
+      On n'a pas réussi à prendre ce petit point, mais après ces deux matches compliqués de rang à l'extérieur,
+      on est toujours en vie après avoir gagné à Monaco. On est déçus, mais il reste sept matches et l'on est encore vivants. »
+   </p>
+</div>
+
+{% endblock body %}
+
