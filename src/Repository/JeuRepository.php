@@ -33,6 +33,7 @@ class JeuRepository extends ServiceEntityRepository
     }
 
 
+
     // /**
     //  * @return Jeu[] Returns an array of Jeu objects
     //  */
@@ -72,6 +73,23 @@ class JeuRepository extends ServiceEntityRepository
         )->setParameter('id', $id);
 
         // returns an array of Product objects
+        return $query->execute();
+    }
+
+    /**
+     * @return QueryAlias
+     */
+    public function findAllMatch()
+    {
+        $entityManager=$this->getEntityManager();
+        $query= $entityManager->createQuery(
+
+            ' 
+                    select distinct e.NomEquipe,j.heure
+                    from App\Entity\Equipe e, App\Entity\Jeu j
+                    where j.idEquipe1=e.id
+                    OR j.idEquipe2=e.id'
+        );
         return $query->execute();
     }
 }
