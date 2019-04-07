@@ -22,7 +22,7 @@ class UserForm extends AbstractType
             ->add('Prenom',TextType::class)
             ->add('Login',TextType::class)
             ->add('Password',PasswordType::class)
-
+            ->add('Confirm_Password',PasswordType::class)
             ->add('Valider', SubmitType::class)
         ;
     }

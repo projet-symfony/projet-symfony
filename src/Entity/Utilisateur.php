@@ -39,12 +39,12 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=255)
-     **@Assert\EqualTo(propertyPath="Confirm_Password")
+     **@Assert\EqualTo(propertyPath="Confirm_Password", message="Vous n'avez pas renseigné le meme mot de passe")
      */
     private $Password;
 
     /**
-     *@Assert\EqualTo(propertyPath="Password")
+     *@Assert\EqualTo(propertyPath="Password", message="Vous n'avez pas renseigné le meme mot de passe")
      */
     private $Confirm_Password;
 

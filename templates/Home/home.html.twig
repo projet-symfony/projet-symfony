@@ -11,7 +11,15 @@ Nextipster
 
 
 {% block titleForm %} Login {% endblock %}
-{% block form %}{{form(form)}} {% endblock %}
+{% block form %}
+    {{ form_start(form) }}
+
+    <div>{{ form_row(form.Nom, {'label': 'Nom', 'attr':{'placeholder':'Nom...'}}) }}</div>
+    <div>{{ form_row(form.Prenom, {'label': 'Prenom', 'attr':{'placeholder':'Prenom...'}}) }}</div>
+    <div>{{ form_row(form.Login, {'label': 'Nom d\'utilisateur', 'attr':{'placeholder':'Nom d\'utilisateur...'}}) }}</div>
+    <div>{{ form_row(form.Password, {'label': 'Mot de passe', 'attr':{'placeholder':'Mot de passe...'}}) }}</div>
+    {{ form_end(form) }}
+{% endblock %}
 {% block register %} <button><a href="/register">S'inscrire</a></button> {% endblock %}
 
 
