@@ -90,7 +90,6 @@ h2{
 
 .slideshow-container {
     width: 80%;
-    position: relative;
     margin: auto;
 }
 
@@ -113,42 +112,17 @@ h2{
     user-select: none;
 }
 
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-}
 
 .text {
     font-size: 20px;
     font-weight: 900;
-    padding: 8px 12px;
     width: 100%;
     text-align: center;
-
 }
 .text a{
     text-decoration: none;
-    color: #730E16;
-}
-
-
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-    background-color: #717171;
+    color: blue;
+    width: 100%;
 }
 
 .fade {
@@ -166,4 +140,20 @@ h2{
 @keyframes fade {
     from {opacity: .4}
     to {opacity: 1}
+}
+
+.login{
+    padding-top: 24px;
+}
+
+.password{
+    padding-top: 26px;
+}
+.valider{
+    padding-top: 28px;
+}
+
+.inscription{
+    padding-top: 30px;
+
 }
