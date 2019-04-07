@@ -1,4 +1,4 @@
-{%  extends "base2.html.twig" %}
+{%  extends "base.html.twig" %}
 
 {% block title  %}
    Lyon
@@ -10,16 +10,12 @@
 
 
 
-{% block titleForm %} Login {% endblock %}
-{% block form %}{{form(form)}} {% endblock %}
-{% block register %} <button><a href="/register">S'inscrire</a></button> {% endblock %}
-
 
 
 {%  block body %}
-<div style="text-align: center; width: 50%;">
+<div style="text-align: center; width: 100%; padding-top: 20px;">
    <h1 style="color: blue;">OL : fracture ouverte avec les supporters après la défaite contre Dijon</h1>
-   <img src="images/30d4b.jpg" style="width:50%; height: 200px; margin-left: 180px; margin-top: 10px;">
+   <img src="{{ asset('images/30d4b.jpg') }}" style="width:50%; height: 200px; margin-left: 50px; margin-top: 10px;">
    <p> Publié le samedi 6 avril 2019 à 23:53 </p>
    <p>   Après l'élimination en demi-finales de Coupe de France mardi, la défaite contre Dijon a
          crispé un peu plus les supporters lyonnais, chambreurs et contestataires au cours d'un après-midi tendu.
