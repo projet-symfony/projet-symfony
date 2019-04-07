@@ -1,30 +1,24 @@
-{% extends "base.html.twig" %}
+{%  extends "base.html.twig" %}
 
-{% block title %}
-    Classement
+{% block title  %}
+    Classement des clubs
 {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
+
+{%  block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('CSS/classement.css') }}">
-{% endblock %}
-
-{% block header %}
-    {{ parent() }}
 {% endblock %}
 
 {% block body %}
     {{ parent() }}
-
     <div class="search">
-
         {{ form_start(form) }}
         <div class="first">{{ form_row(form.Pays) }}</div>
         <div class="second"> {{ form_row(form.Ligue) }}</div>
         <div class="third"><input type="submit" value="Rechercher" /></div>
         {{ form_end(form) }}
-
     </div>
+
     <div class="container mt-4">
         <h1> Classement Actuel Des Clubs </h1>
         <table class="table table-striped">
@@ -34,7 +28,7 @@
                 <th> Clubs </th>
                 <th> Points </th>
                 <th> Joués </th>
-                <th> Gagnés </th>²
+                <th> Gagnés </th>
                 <th> Perdus </th>
 
             </tr>
@@ -55,7 +49,7 @@
             {% endfor %}
             </tbody>
         </table>
-    </div>
+   </div>
 
     <div class="pagination">
         {{ knp_pagination_render(clubs) }}
