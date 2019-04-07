@@ -25,6 +25,7 @@ class HomeController extends ForAllController
     private $repository ;
     private $pronostiqueurs5;
     private $repository2;
+    private $listMatch;
 
 
 
@@ -61,14 +62,14 @@ class HomeController extends ForAllController
             ->getRepository(Jeu::class)
         ;
         $listMatch = $repository2->findAllMatch();
-
         $listUser = $repository->findAll();
         foreach($listUser as $us){
             if ($form->get('Login')->getData()==$us->getLogin() && $form->get('Password')->getData()==$us->getPassword()){
                 return $this->render('home/homeConnected.html.twig',[
-
                     'pronostiqueurs5' => $this->pronostiqueurs5,
                     'match' => $listMatch
+                    'pronostiqueurs5' => $this->pronostiqueurs5,
+                    'match' => $this->listMatch
 
                 ]);
             }
@@ -80,7 +81,7 @@ class HomeController extends ForAllController
         return $this->render('home/home.html.twig', [
             'pronostiqueurs5' => $this->pronostiqueurs5,
             'form'=>$form->createView(),
-            'match' => $listMatch
+            'match' => $this->listMatch
         ]);
 
     }
@@ -89,14 +90,15 @@ class HomeController extends ForAllController
     /**
      * @Route("/register")
      */
-    public function register(ObjectManager $om, Request $request, UtilisateurRepository $repository)
+    public function register(ObjectManager $om, Request $request, UtilisateurRepository $repository, JeuRepository $repository2)
     {
         $repository2 = $this
             ->getDoctrine()
             ->getManager()
-            ->getRepository(Utilisateur::class)
+            ->getRepository(Jeu::class)
         ;
-
+        $listMatch = $repository2->findAllMatch();
+        $this->listMatch = $listMatch;
 
 
         $user = new Utilisateur();
@@ -111,14 +113,16 @@ class HomeController extends ForAllController
 
             return $this->render('home/home.html.twig', [
                 'form' => $form->createView(),
-                'pronostiqueurs5' => $this->pronostiqueurs5
+                'pronostiqueurs5' => $this->pronostiqueurs5,
+                'match' => $this->listMatch
             ]);
 
         }
 
         return $this->render('home/homeRegister.html.twig', [
             'pronostiqueurs5' => $this->pronostiqueurs5,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'match' => $this->listMatch
         ]);
     }
 
