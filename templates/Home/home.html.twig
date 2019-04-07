@@ -21,17 +21,17 @@ Nextipster
     <div class="slideshow-container">
 
         <div class="mySlides fade">
-            <img src="images/30d4b.jpg" style="width:70%; height: 200px; margin-left: 50px; margin-top: 10px;">
-            <div class="text"> <a href="#"> ENTRE LYON ET SON PUBLIC, UNE FRACTURE OUVERTE</a></div>
+            <img src="images/30d4b.jpg" style="width:60%; height: 200px; margin-left: 130px; margin-top: 10px;">
+            <div class="text"> <a href="#"> ENTRE LYON ET SON PUBLIC</a></div>
         </div>
 
         <div class="mySlides fade">
-            <img src="images/b58a6.jpg" style="width:70%; height: 200px; margin-left: 50px; margin-top: 10px;">
+            <img src="images/b58a6.jpg" style="width:60%; height: 200px; margin-left: 130px; margin-top: 10px;">
             <div class="text"><a href="#"> LES VERRES ARRACHENT UN POINT </a></div>
         </div>
 
         <div class="mySlides fade">
-            <img src="images/fc834.jpg" style="width:70%; height: 200px; margin-left: 50px; margin-top: 10px;">
+            <img src="images/fc834.jpg" style="width:60%; height: 200px; margin-left: 130px; margin-top: 10px;">
             <div class="text"><a href="#" class="text"> MERCADAL : " TOUJOURS EN VIE "</a></div>
         </div>
 
@@ -42,7 +42,6 @@ Nextipster
 
             <ul class="ulMatch">
                 <li class="headerMatch"> Champions League </li>
-
                {% for j in jeu %}
                    <li class="match"><a href= "{{ path('Analyse',{'id':j.id}) }}">
                            <span class="time">{{ j.heure|date('H:i:s') }} </span>
