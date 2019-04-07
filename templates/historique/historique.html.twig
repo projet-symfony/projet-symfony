@@ -7,7 +7,7 @@
 
 {%  block body %}
 
-    <div class="container" style="padding-left: 200px;">
+    <div class="container" style="padding-left: 500px;">
         <div class="row flex">
             <h2>Les dernières activités</h2>
             {% for al in all %}
@@ -18,7 +18,7 @@
 
                                 <p class="card-text">
                                     <a href="{{ path('profile.show',{ id: al.id } ) }}">{{ al.Prenom }}</a> a pronostiqué pour le match
-                                    <a href="#">{{ al.NomEquipe }} contre  {{ al.NomEquipe }} </a>
+                                    {{ al.NomEquipe }} Vs  {{ al.NomEquipe }}
                                     en choisissant {{ al.numPronostique }}
                                     à  {{  al.heure|date('H:i:s')  }}
                                 </p>

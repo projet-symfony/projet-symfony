@@ -36,6 +36,9 @@ class UtilisateurJeux
      * @ORM\Column(type="time")
      */
     private $heure;
+    public function __construct(){
+        $this->heure(new \DateTime('now'));
+    }
 
     public function getHeure(): ?\DateTimeInterface
     {
