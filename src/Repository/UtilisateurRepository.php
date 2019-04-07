@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\RechercheClassementUtilisateur;
 use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -20,11 +22,22 @@ class UtilisateurRepository extends ServiceEntityRepository
     }
 
 
-    public function printAll(){
+    public function printAll(/*RechercheClassementUtilisateur $recherche*/){
         return $this->createQueryBuilder('u')
             ->orderBy('u.tauxReussite' , 'DESC')
             ->getQuery()
             ->getResult();
+
+        //return $query->getQuery();
+    }
+
+    public function printJustFive(){
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.tauxReussite' , 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+
     }
 
     public function findByPercentage(){

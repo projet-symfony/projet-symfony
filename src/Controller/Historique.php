@@ -20,11 +20,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class Historique extends AbstractController{
 
-
+    private $repository;
     /**
      * @var UtilisateurJeuxRepository
      */
     private $uj;
+
 
     /**
      * @var UtilisateurRepository
@@ -32,10 +33,11 @@ class Historique extends AbstractController{
     private $u;
 
 
-    public function __construct(UtilisateurJeuxRepository $uj, UtilisateurRepository $u)
+    public function __construct(UtilisateurJeuxRepository $uj, UtilisateurRepository $u, UtilisateurRepository $repository)
     {
         $this->uj = $uj;
         $this->u=$u;
+        $this->repository = $repository;
     }
 
     /**
@@ -44,10 +46,12 @@ class Historique extends AbstractController{
      * @return Array
      */
     public function HistoriqueIndex(UtilisateurJeuxRepository $rep) : Response {
+        $pronostiqueurs5 = $this->repository->printJustFive();
 
         $res = $rep->getThemAll();
         return $this->render('historique/historique.html.twig', [
-            'all' => $res
+            'all' => $res,
+            'pronostiqueurs5' => $pronostiqueurs5
         ]);
     }
 
@@ -57,11 +61,12 @@ class Historique extends AbstractController{
      * @return Response
      */
     public function showProfil($id) : Response  {
-
+        $pronostiqueurs5 = $this->repository->printJustFive();
         $user=$this->u->find($id);
         return $this->render("Utilisateur/myProfile.html.twig", [
             //envoyer mon utilisateur à ma vue
-            'util' => $user
+            'util' => $user,
+            'pronostiqueurs5' => $pronostiqueurs5
         ]);
     }
 
