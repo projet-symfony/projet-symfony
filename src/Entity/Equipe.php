@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -63,10 +65,12 @@ class Equipe
     private $points;
 
 
-    public function __Construct(){
-       $this->numero = 0;
-       $this->points=0;
+    public function __construct()
+    {
+        $this->numero = 0;
+        $this->points=0;
     }
+
 
     public function getId(): ?int
     {

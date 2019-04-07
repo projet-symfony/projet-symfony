@@ -27,7 +27,7 @@ class Jeu
     private $Lieu;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="time", nullable=true)
      */
     private $heure;
 
@@ -41,24 +41,11 @@ class Jeu
      */
     private $score;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Equipe", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $idEquipe1;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Equipe", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $idEquipe2;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", mappedBy="jeux")
      */
     private $Utilisateurs;
-
-
 
 
     public function __construct()
@@ -122,29 +109,7 @@ class Jeu
         return $this;
     }
 
-    public function getIdEquipe1(): ?Equipe
-    {
-        return $this->idEquipe1;
-    }
 
-    public function setIdEquipe1(Equipe $idEquipe1): self
-    {
-        $this->idEquipe1 = $idEquipe1;
-
-        return $this;
-    }
-
-    public function getIdEquipe2(): ?Equipe
-    {
-        return $this->idEquipe2;
-    }
-
-    public function setIdEquipe2(Equipe $idEquipe2): self
-    {
-        $this->idEquipe2 = $idEquipe2;
-
-        return $this;
-    }
 
     public function __toString()
     {
@@ -158,6 +123,7 @@ class Jeu
     {
         return $this->Utilisateurs;
     }
+
 
     public function addJeux(Utilisateur $Utilisateurs): self
     {
@@ -178,5 +144,11 @@ class Jeu
 
         return $this;
     }
+
+
+
+
+
+
 
 }
