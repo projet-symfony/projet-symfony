@@ -1,0 +1,39 @@
+{%  extends "base.html.twig" %}
+
+{% block title  %}
+    Nextipster - Pronostic du jour
+{% endblock %}
+
+
+{%  block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/dayprono.css') }}">
+{% endblock %}
+
+{%  block body %}
+
+    <h2> Pronostic du jour </h2>
+
+    <hr class="separator">
+    {% for j in jeu %}
+        <ul>
+            <li>
+
+                <p class="detailMatch"> {{ j.heure|date('H:i:s') }} {{ j.date|date('Y-m-d') }} à {{ j.Lieu }}</p>
+                <p class="teamMatch"> {{ j.getIdEquipe1().NomEquipe }} -- {{ j.getIdEquipe2().NomEquipe }} </p>
+                <div class="result">
+                    <button class="activeButton"> 1 </button>
+                    <button class="otherButton" disabled> N </button>
+                    <button class="otherButton" disabled> 2 </button>
+                </div>
+
+                <div class="cote">
+                    <span class="activeCote">1.30</span>
+                    <span class="otherCote">3.40</span>
+                    <span class="otherCote">3.75</span> </div>
+            </li>
+
+
+        </ul>
+    {% endfor %}
+
+{% endblock %}

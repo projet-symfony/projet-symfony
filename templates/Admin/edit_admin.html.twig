@@ -1,0 +1,14 @@
+{% extends '@EasyAdmin/default/edit.html.twig' %}
+
+
+{% block main %}
+
+    {% block entity_form %}
+
+            {{ form_start(form) }}
+                {{ form_widget(form.password) }}
+            {{ form_end(form) }}
+
+    {% endblock %}
+
+{% endblock %}

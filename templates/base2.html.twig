@@ -1,0 +1,69 @@
+<!Dctml>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/header.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/left.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/footer.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+
+<body>
+
+<header>
+    <div id="banner">
+        <img src="banner.jpg" alt="banniere">
+    </div>
+
+    <ul class="ulMenu">
+        <li class="menu"> <a href="/" id="first"> ACCEUIL </a></li>
+        <li class="menu"> <a href="dayprono">PRONOSTIC DU JOUR </a> </li>
+        <li class="dropdown"> <a> CLASSEMENT </a>
+            <div class="dropdown-content">
+                <a href="{{ path('classementpronostiqueur') }}">Pronostiqueur</a>
+                <a href="{{ path('classementclub') }}">Equipes</a>
+            </div>
+        </li>
+        <li class="menu"> <a href="historique"> HISTORIQUE </a></li>
+        <li class="menu"> <a href="profil"> PROFIL </a></li>
+    </ul>
+
+</header>
+
+<div class = "leftLogin">
+    <br /> <br />
+    <h4> Top User </h4>
+    {% set n = 0 %}
+    <ul class="ulFirstUser">
+        {% for pro in pronostiqueurs5 %}
+            {% set n = n+1 %}
+
+            <li id="FirstUser">
+                <span id="nbUser"> {{ n }} </span>
+                <img alt="photoUser">
+                <span id="nameUser"> {{ pro.Prenom~" "~pro.Nom }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="body">
+    {% block body %}{% endblock %}
+
+</div>
+
+
+<footer>
+    <p>NextTipster</p>
+    <a href="{{ path('info') }}" >Qui sommes nous ?</a>
+    <a href="{{ path('contacte') }}">Nous contacter</a>
+    <a href="{{ path('plan') }}">Plan du site</a>
+    <a href="{{ path('mention') }}">Mentions légales</a>
+
+</footer>
+
+
+</body>
+
+</html>
+
