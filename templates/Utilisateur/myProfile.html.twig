@@ -10,21 +10,25 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <br><br>
+    <center>
     <div class="container">
-        <table>
+        <table style="font-size: 20px;font-weight: 900;">
+            <tr>
+                <td colspan="2"><img src="{{ asset('images/Users-icon.png') }}" width="120px" height="150px"></td>
+            </tr>
             <tr>
                 <td>
-                    {{ util.Nom }}
-                </td>
-                <td>
                     Nom
+                </td>
+                <td style="text-align: center">
+                    {{ util.Nom }}
                 </td>
             </tr>
             <tr>
                 <td>
                     Prénom
                 </td>
-                <td>
+                <td style="text-align: center">
                     {{ util.Prenom }}
                 </td>
             </tr>
@@ -32,7 +36,7 @@
                 <td>
                     Nombre de pronostique
                 </td>
-                <td>
+                <td style="text-align: center">
                     {{ util.nbrePronostiques }}
                 </td>
             </tr>
@@ -40,7 +44,7 @@
                 <td>
                     Taux de réussite
                 </td>
-                <td>
+                <td style="text-align: center; padding-left: 4px;">
                     {{ util.tauxReussite }} %
                 </td>
             </tr>
@@ -48,10 +52,10 @@
                 <td>
                     Nombre de réussite
                 </td>
-                <td>
+                <td style="text-align: center">
                     {{ util.nbreReussite }}
                 </td>
             </tr>
         </table>
-    </div>
+    </div></center>
 {% endblock %}

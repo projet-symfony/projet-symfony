@@ -45,7 +45,7 @@
         {%  for p in pronostiqueurs5 %}
         <li id="user">
             {%  set n = n+1 %}
-           <span id="num"> {{ n }}</span> <a href="#" style="text-decoration: none; color:#37474F;"> <span id="infoUser"> {{ p.Prenom~" "~p.Nom }}</span> </a>
+           <span id="num"> {{ n }}</span> <a style="text-decoration: none; color:#37474F;"> <span id="infoUser"> {{ p.Prenom~" "~p.Nom }}</span>
         </li>
         {% endfor %}
     </ul>
