@@ -14,12 +14,14 @@
     <h2> Pronostic du jour </h2>
 
     <hr class="separator">
+    {% set test = 0 %}
     {% for j in jeu %}
     <ul>
+        {% if test < 5 %}
         <li>
 
             <p class="detailMatch"> {{ j.heure|date('H:i:s') }} {{ j.date|date('Y-m-d') }} à {{ j.Lieu }}</p>
-            <p class="teamMatch"> {{ j.getIdEquipe1().NomEquipe }} -- {{ j.getIdEquipe2().NomEquipe }} </p>
+            <p class="teamMatch"> {{ j.equipes.first().NomEquipe }} -- {{ j.equipes.last().NomEquipe }} </p>
             <div class="result">
                 <button class="activeButton"> 1 </button>
                 <button class="otherButton" disabled> N </button>
@@ -31,8 +33,8 @@
                 <span class="otherCote">3.40</span>
                 <span class="otherCote">3.75</span> </div>
         </li>
-
-
+        {% endif %}
+{% set test = test + 1 %}
     </ul>
     {% endfor %}
 

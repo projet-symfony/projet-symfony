@@ -7,6 +7,7 @@
  */
 namespace App\Controller;
 use App\Repository\JeuRepository;
+use App\Repository\StatsRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,11 +16,13 @@ use Symfony\Component\HttpFoundation\Request;
 class AnalyseController extends AbstractController
 {
     private $repository ;
+
     private $em;
 
     public function __construct(JeuRepository $repository, ObjectManager $em)
     {
         $this->repository = $repository;
+
         $this->em = $em;
     }
     /**
@@ -28,10 +31,9 @@ class AnalyseController extends AbstractController
     public function analysePage(Request $request){
 
         $jeu = $this->repository->find($request->query->get('id'));
-       $equipe1 = $this->repository->AllEquipe('idEquipe1',$request->query->get('Equipe1'));
-        $equipe2 = $this->repository->AllEquipe('idEquipe2',$request->query->get('Equipe2'));
+        ////$stats=$this->repstat->
         return $this->render('Analyse/Analyse.html.twig', [
-            'jeu' => $jeu, 'equipe1'=>$equipe1, 'equipe2'=>$equipe2]);
+            'jeu' => $jeu]);
 
     }
     /**

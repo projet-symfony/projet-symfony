@@ -26,8 +26,8 @@ class JeuRepository extends ServiceEntityRepository
     public function printAll()
     {
         return $this->createQueryBuilder('J')
-            ->orderBy('J.date', 'ASC')
-            ->orderBy('J.heure', 'ASC')
+            ->orderBy('J.date', 'DESC')
+            ->addOrderBy('J.heure','DESC')
             ->getQuery()
             ->getResult();
     }

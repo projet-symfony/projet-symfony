@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\MatchRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\JeuRepository")
  */
 class Jeu
 {
@@ -42,27 +42,28 @@ class Jeu
      * @ORM\Column(type="integer", nullable=true)
      */
     private $score;
-
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Equipe", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Equipe" ,mappedBy="jeux")
      */
-    private $idEquipe1;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Equipe", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $idEquipe2;
+    private $equipes;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", mappedBy="ListeMatch")
+     *
      */
     private $ListeUtilisateurs;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Stats",mappedBy="jeux")
+     */
+    private $stats;
 
     public function __construct()
     {
         $this->ListeUtilisateurs = new ArrayCollection();
+        $this->equipes = new ArrayCollection();
+        $this->stats = new ArrayCollection();
     }
 
 
@@ -121,29 +122,7 @@ class Jeu
         return $this;
     }
 
-    public function getIdEquipe1(): ?Equipe
-    {
-        return $this->idEquipe1;
-    }
 
-    public function setIdEquipe1(Equipe $idEquipe1): self
-    {
-        $this->idEquipe1 = $idEquipe1;
-
-        return $this;
-    }
-
-    public function getIdEquipe2(): ?Equipe
-    {
-        return $this->idEquipe2;
-    }
-
-    public function setIdEquipe2(Equipe $idEquipe2): self
-    {
-        $this->idEquipe2 = $idEquipe2;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Utilisateur[]
@@ -169,11 +148,20 @@ class Jeu
             $this->ListeUtilisateurs->removeElement($listeUtilisateur);
             $listeUtilisateur->removeListeMatch($this);
         }
-
         return $this;
     }
 
-
+    public function getEquipes(): Collection
+    {
+        return $this->equipes;
+    }
+    /**
+     * @return Collection|Stats[]
+     */
+    public function getStats(): Collection
+    {
+        return $this->stats;
+    }
 
 
 

@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EquipeRepository")
@@ -60,11 +62,21 @@ class Equipe
      * @ORM\Column(type="integer")
      */
     private $points;
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Jeu", cascade={"persist", "remove"},inversedBy="equipes")
+     * @ORM\OrderBy({"date" = "DESC","heure"="DESC"})
 
-
+     */
+   private  $jeux;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Stats",mappedBy="equipes")
+     */
+    private $stats;
     public function __Construct(){
         $this->numero = 0;
         $this->points = 0;
+        $this->jeux = new ArrayCollection();
+        $this->stats= new ArrayCollection();
     }
 
 
@@ -181,8 +193,12 @@ class Equipe
         $this->points += ($this->nbMatchGagne * 3) ;
         return $this;
     }
-
-
-
+    /**
+     * @return Collection|Jeu[]
+     */
+    public  function  getJeux():Collection
+    {
+        return $this->jeux;
+    }
 
 }
