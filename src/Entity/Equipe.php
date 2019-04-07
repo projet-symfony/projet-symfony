@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EquipeRepository")
@@ -63,12 +63,21 @@ class Equipe
      * @ORM\Column(type="integer", nullable=true)
      */
     private $points;
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Jeu", cascade={"persist", "remove"},inversedBy="equipes")
+     * @ORM\OrderBy({"date" = "DESC","heure"="DESC"})
 
 
-    public function __construct()
-    {
-        $this->numero = 0;
-        $this->points=0;
+    private  $jeux;
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Stats",mappedBy="equipe")
+     */
+    private $stats;
+    public function __Construct(){
+       $this->numero = 0;
+       $this->points=0;
+       $this->jeux = new ArrayCollection();
+        $this->stats = new ArrayCollection();
     }
 
 
@@ -184,6 +193,13 @@ class Equipe
         $this->points += ($this->nbMatchGagne * 3) ;
         return $this;
     }
+    /**
+     * @return Collection|Jeu[]
+     */
+    public  function  getJeux():Collection
+    {
+        return $this->jeux;
+    }
 
 
     public function __toString()
@@ -191,5 +207,11 @@ class Equipe
        return $this->NomEquipe;
     }
 
-
+    /**
+     * @return mixed
+     */
+    public function getStats()
+    {
+        return $this->stats;
+    }
 }

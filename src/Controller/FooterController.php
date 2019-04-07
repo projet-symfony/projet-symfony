@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 use App\Entity\Contacte;
+use App\Repository\UtilisateurRepository;
 use App\Repository\ContacteRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,33 +21,41 @@ class FooterController extends AbstractController
 
     private $repository ;
     private $em ;
+    private  $repoutil;
 
-
-    /* public function __construct(contacteRepository $repository, ObjectManager $em)
+    public function __construct(contacteRepository $repository,UtilisateurRepository $repoutil ,ObjectManager $em)
      {
          $this->repository = $repository;
+          $this->repoutil=$repoutil;
           $this->em = $em;
-     }*/
+     }
 
 
     /**
      * @Route("/footer/info" ,name="info")
      */
     public function infoPage(){
-        return $this->render('/footer/info.html.twig');
+        $pronostiqueurs5 = $this->repoutil->printJustFive();
+        return $this->render('/footer/info.html.twig', [
+        'pronostiqueurs5' => $pronostiqueurs5
+        ]);
     }
     /**
      * @Route("/footer/contacte" ,name="contacte")
      */
     public function contactePage(){
-        return $this->render('/footer/contacte.html.twig');
+        $pronostiqueurs5 = $this->repoutil->printJustFive();
+        return $this->render('/footer/contacte.html.twig', [
+            'pronostiqueurs5' => $pronostiqueurs5
+        ]);
     }
     /**
      * @Route("/footer/footer", name="footer")
      */
 
 
-    /*public function  index(Request $request){
+    public function  index(Request $request){
+    $pronostiqueurs5 = $this->repoutil->printJustFive();
         $name = $request->get("nom");
         $message = $request->get("msg");
 
@@ -62,21 +71,27 @@ class FooterController extends AbstractController
         $this->em->persist($contacte);
         $this->em->flush();
         return $this->render('footer/message.html.twig',["name"=>$name,
-        "message"=>"ttttttttt"]);
-    }*/
+        "message"=>"ttttttttt",'pronostiqueurs5' => $pronostiqueurs5]);
+    }
 
 
     /**
      * @Route("/footer/plan" ,name="plan")
      */
     public function planPage(){
-        return $this->render('/footer/plan.html.twig');
+        $pronostiqueurs5 = $this->repoutil->printJustFive();
+        return $this->render('/footer/plan.html.twig', [
+            'pronostiqueurs5' => $pronostiqueurs5
+        ]);
     }
     /**
      * @Route("/footer/mention" ,name="mention")
      */
     public function mentionPage(){
-        return $this->render('/footer/mention.html.twig');
+        $pronostiqueurs5 = $this->repoutil->printJustFive();
+        return $this->render('/footer/mention.html.twig', [
+            'pronostiqueurs5' => $pronostiqueurs5
+        ]);
     }
 
 
@@ -84,7 +99,10 @@ class FooterController extends AbstractController
      * @Route("/footer/FAQ" ,name="FAQ")
      */
     public function FAQPage(){
-        return $this->render('/footer/FAQ.html.twig');
+        $pronostiqueurs5 = $this->repoutil->printJustFive();
+        return $this->render('/footer/FAQ.html.twig', [
+            'pronostiqueurs5' => $pronostiqueurs5
+        ]);
     }
     /**
      * @Route("/article/{slug}")

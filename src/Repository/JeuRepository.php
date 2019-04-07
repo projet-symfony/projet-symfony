@@ -61,17 +61,4 @@ class JeuRepository extends ServiceEntityRepository
               ->getResult()
           ;
       }*/
-    public function findAllId($id): array
-    {
-        $entityManager = $this->getEntityManager();
-
-        $query = $entityManager->createQuery(
-            'SELECT J
-        FROM App\Entity\Jeu
-        WHERE J.id = :id'
-        )->setParameter('id', $id);
-
-        // returns an array of Product objects
-        return $query->execute();
-    }
 }

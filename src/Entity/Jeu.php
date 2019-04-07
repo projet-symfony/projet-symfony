@@ -43,14 +43,26 @@ class Jeu
 
 
     /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Equipe" ,mappedBy="jeux")
+     */
+    private $equipes;
+
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", mappedBy="jeux")
      */
     private $Utilisateurs;
 
-
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Stats",mappedBy="jeu")
+     */
+    private $stats;
     public function __construct()
     {
         $this-> Utilisateurs = new ArrayCollection();
+        $this-> equipes = new ArrayCollection();
+        $this-> stats = new ArrayCollection();
+
     }
 
 
@@ -110,10 +122,13 @@ class Jeu
     }
 
 
-
     public function __toString()
     {
         return $this->Lieu;
+    }
+    public function getEquipes(): Collection
+    {
+        return $this->equipes;
     }
 
     /**
@@ -146,9 +161,11 @@ class Jeu
     }
 
 
-
-
-
-
-
+    /**
+     * @return mixed
+     */
+    public function getStats()
+    {
+        return $this->stats;
+    }
 }

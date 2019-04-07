@@ -42,7 +42,15 @@ Nextipster
 
             <ul class="ulMatch">
                 <li class="headerMatch"> Champions League </li>
-                <li class="match"><a href= "{{ path('Analyse') }}"> <span class="time">18:55</span> <span class="team">Paris - Réal</span>  <span class="nbAvis"> 5 Avis </span> </a></li>
+
+               {% for j in jeu %}
+                   <li class="match"><a href= "{{ path('Analyse',{'id':j.id}) }}">
+                           <span class="time">{{ j.heure|date('H:i:s') }} </span>
+                           <span class="team">
+                            {{ j.equipes.first().NomEquipe }} -- {{ j.equipes.last().NomEquipe }}
+                        </span>
+                           <span class="nbAvis"> 5 Avis </span> </a></li>
+                {% endfor %}
                 <li class="match"><a href= "{{ path('Analyse') }}">  <span class="time">14:00</span>  <span class="team"> Barça - Juventus </span>  </a> </li>
             </ul>
 
