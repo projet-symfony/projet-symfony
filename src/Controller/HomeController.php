@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 use App\Controller\ForAllController;
+use App\Entity\Jeu;
 use App\Entity\Utilisateur;
 use App\Form\UserForm;
 use App\Repository\JeuRepository;
@@ -38,7 +39,7 @@ class HomeController extends ForAllController
     /**
      * @Route("/")
      */
-    public function homepage(ObjectManager $om, Request $request, UtilisateurRepository $repository){
+    public function homepage(ObjectManager $om, Request $request, UtilisateurRepository $repository, JeuRepository $repository2){
         $user = new Utilisateur();
         $form   = $this->createForm(UserForm::class, $user);
         $form->handleRequest($request);
@@ -49,8 +50,15 @@ class HomeController extends ForAllController
             ->getRepository(Utilisateur::class)
         ;
 
+        $pronostiqueurs5 = $this->repository2->printJustFive();
 
-
+        $repository2 = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository(Jeu::class)
+        ;
+        $listMatch = $repository2->findAllMatch();
+      
         $listUser = $repository->findAll();
         foreach($listUser as $us){
             if ($form->get('Login')->getData()==$us->getLogin() && $form->get('Password')->getData()==$us->getPassword()){
@@ -64,8 +72,9 @@ class HomeController extends ForAllController
 
 
         return $this->render('home/home.html.twig', [
-            'pronostiqueurs5' => $this->pronostiqueurs5,
-            'form'=>$form->createView()
+            'pronostiqueurs5' => $pronostiqueurs5,
+            'form'=>$form->createView(),
+            'match' => $listMatch
 
         ]);
 
