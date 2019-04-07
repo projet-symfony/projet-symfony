@@ -7,6 +7,8 @@
  */
 
 namespace App\Controller;
+
+use App\Controller\ForAllController;
 use App\Entity\Utilisateur;
 use App\Repository\JeuRepository;
 use App\Repository\UtilisateurJeuxRepository;
@@ -18,8 +20,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-class Historique extends AbstractController{
-
+class Historique extends ForAllController {
+    private $pronostiqueurs5;
     private $repository;
     /**
      * @var UtilisateurJeuxRepository
@@ -38,6 +40,7 @@ class Historique extends AbstractController{
         $this->uj = $uj;
         $this->u=$u;
         $this->repository = $repository;
+        $this->pronostiqueurs5 = $this->renderForAll($repository);
     }
 
     /**
@@ -46,12 +49,12 @@ class Historique extends AbstractController{
      * @return Array
      */
     public function HistoriqueIndex(UtilisateurJeuxRepository $rep) : Response {
-        $pronostiqueurs5 = $this->repository->printJustFive();
+
 
         $res = $rep->getThemAll();
         return $this->render('historique/historique.html.twig', [
             'all' => $res,
-            'pronostiqueurs5' => $pronostiqueurs5
+            'pronostiqueurs5' => $this->pronostiqueurs5
         ]);
     }
 
@@ -61,12 +64,12 @@ class Historique extends AbstractController{
      * @return Response
      */
     public function showProfil($id) : Response  {
-        $pronostiqueurs5 = $this->repository->printJustFive();
+
         $user=$this->u->find($id);
         return $this->render("Utilisateur/myProfile.html.twig", [
             //envoyer mon utilisateur à ma vue
             'util' => $user,
-            'pronostiqueurs5' => $pronostiqueurs5
+            'pronostiqueurs5' => $this->pronostiqueurs5
         ]);
     }
 

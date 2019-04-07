@@ -8,7 +8,7 @@
 
 namespace App\Controller;
 
-
+use App\Controller\ForAllController;
 use App\Entity\RechercheClassementEquipe;
 use App\Entity\RechercheClassementUtilisateur;
 use App\Entity\Utilisateur;
@@ -25,8 +25,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-class ClassementController extends AbstractController
+class ClassementController extends ForAllController
 {
+    private $pronostiqueurs5;
     private $em;
     private $repository1;
     private $repository2;
@@ -37,6 +38,7 @@ class ClassementController extends AbstractController
         $this->repository1 = $repository1;
         $this->repository2 = $repository2;
         $this->repository3 = $repository3;
+        $this->pronostiqueurs5 = $this->renderForAll($repository3);
     }
 
     /**
@@ -54,12 +56,12 @@ class ClassementController extends AbstractController
             15
         );
 
-        $pronostiqueurs5 = $this->repository3->printJustFive();
+
 
 
         return $this->render('Classement/ClassementClub.html.twig', [
             'clubs' => $clubs,
-            'pronostiqueurs5' => $pronostiqueurs5,
+            'pronostiqueurs5' => $this->pronostiqueurs5,
             'form' => $form->createView()
         ]);
     }
@@ -78,11 +80,11 @@ class ClassementController extends AbstractController
             20
         );
 
-        $pronostiqueurs5 = $this->repository3->printJustFive();
+
 
         return $this->render('Classement/ClassementPronostiqueur.html.twig', [
             'pronostiqueurs' => $pronostiqueurs,
-            'pronostiqueurs5' => $pronostiqueurs5
+            'pronostiqueurs5' => $this->pronostiqueurs5
         ]);
 
 
