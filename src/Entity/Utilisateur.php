@@ -4,6 +4,7 @@ namespace App\Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Cocur\Slugify\Slugify;
@@ -38,8 +39,14 @@ class Utilisateur
 
     /**
      * @ORM\Column(type="string", length=255)
+     **@Assert\EqualTo(propertyPath="Confirm_Password")
      */
     private $Password;
+
+    /**
+     *@Assert\EqualTo(propertyPath="Password")
+     */
+    private $Confirm_Password;
 
 
     /**
@@ -125,6 +132,24 @@ class Utilisateur
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmPassword()
+    {
+        return $this->Confirm_Password;
+    }
+
+    /**
+     * @param mixed $Confirm_Password
+     */
+    public function setConfirmPassword($Confirm_Password): void
+    {
+        $this->Confirm_Password = $Confirm_Password;
+    }
+
+
 
     public function getNbrePronostiques(): ?int
     {
