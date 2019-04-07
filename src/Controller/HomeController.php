@@ -7,7 +7,10 @@
  */
 
 namespace App\Controller;
+<<<<<<< HEAD
 
+=======
+>>>>>>> cd064be782e79ff470b978cee1f5d8d814e27b19
 use App\Controller\ForAllController;
 use App\Entity\Jeu;
 use App\Entity\Utilisateur;
@@ -51,10 +54,13 @@ class HomeController extends ForAllController
             ->getRepository(Utilisateur::class)
         ;
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> cd064be782e79ff470b978cee1f5d8d814e27b19
         $pronostiqueurs5 = $this->repository2->printJustFive();
 
         $repository2 = $this
@@ -63,15 +69,23 @@ class HomeController extends ForAllController
             ->getRepository(Jeu::class)
         ;
         $listMatch = $repository2->findAllMatch();
+<<<<<<< HEAD
 
 
 
+=======
+      
+>>>>>>> cd064be782e79ff470b978cee1f5d8d814e27b19
         $listUser = $repository->findAll();
         foreach($listUser as $us){
             if ($form->get('Login')->getData()==$us->getLogin() && $form->get('Password')->getData()==$us->getPassword()){
                 return $this->render('home/homeConnected.html.twig',[
+<<<<<<< HEAD
                     'pronostiqueurs5' => $this->pronostiqueurs5,
                     'match' => $listMatch
+=======
+                    'pronostiqueurs5' => $this->pronostiqueurs5
+>>>>>>> cd064be782e79ff470b978cee1f5d8d814e27b19
                 ]);
             }
 
@@ -80,10 +94,17 @@ class HomeController extends ForAllController
 
 
         return $this->render('home/home.html.twig', [
+<<<<<<< HEAD
 
             'pronostiqueurs5' => $this->pronostiqueurs5,
             'form'=>$form->createView(),
             'match' => $listMatch
+=======
+            'pronostiqueurs5' => $pronostiqueurs5,
+            'form'=>$form->createView(),
+            'match' => $listMatch
+
+>>>>>>> cd064be782e79ff470b978cee1f5d8d814e27b19
         ]);
 
     }
