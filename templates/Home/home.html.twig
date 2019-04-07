@@ -14,13 +14,13 @@ Nextipster
 {% block form %}
     {{ form_start(form) }}
 
-    <div>{{ form_row(form.Nom, {'label': 'Nom', 'attr':{'placeholder':'Nom...'}}) }}</div>
-    <div>{{ form_row(form.Prenom, {'label': 'Prenom', 'attr':{'placeholder':'Prenom...'}}) }}</div>
-    <div>{{ form_row(form.Login, {'label': 'Nom d\'utilisateur', 'attr':{'placeholder':'Nom d\'utilisateur...'}}) }}</div>
-    <div>{{ form_row(form.Password, {'label': 'Mot de passe', 'attr':{'placeholder':'Mot de passe...'}}) }}</div>
+
+    <div class="login">{{ form_row(form.Login, {'label': 'Username'}) }}</div>
+    <div class="password">{{ form_row(form.Password, {'label': 'Password'}) }}</div>
+    <div class="valider"><input type="submit" value="Valider" /></div>
     {{ form_end(form) }}
 {% endblock %}
-{% block register %} <button><a href="/register">S'inscrire</a></button> {% endblock %}
+{% block register %}<div class="inscription"> <a style="text-decoration: none; border: 1px groove black; height: 20px; background-color: #b9bbbe;" href="/register">S'inscrire</a></div> {% endblock %}
 
 
 

@@ -141,3 +141,19 @@ h2{
     from {opacity: .4}
     to {opacity: 1}
 }
+
+.login{
+    padding-top: 24px;
+}
+
+.password{
+    padding-top: 26px;
+}
+.valider{
+    padding-top: 28px;
+}
+
+.inscription{
+    padding-top: 30px;
+
+}
