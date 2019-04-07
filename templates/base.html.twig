@@ -54,21 +54,28 @@
 
 
     {% block body %}
-<div class="body"> </div>
-    {% endblock %}
+        <div class="body">
+        </div>
 
-<!--
+    {% endblock %}
 <footer>
-    <p>NextTipster</p>
-    <a>Qui sommes nous ?</a>
-    <a>Nous contacter</a>
-    <a>Plan du site</a>
-    <a>Mentions légales</a>
-    <a>FAQ</a>
-</footer>-->
+    <a href="#">Qui sommes nous ?</a>
+    <a href="#">Nous contacter</a>
+    <a href="#">Plan du site</a>
+    <a href="#">Mentions légales</a>
+    <a href="#">FAQ</a>
+</footer>
+
+
+
 </body>
+
 <script>
-    var blink_speed = 500; var t = setInterval(function () { var ele = document.getElementById('topUser'); ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden'); }, blink_speed);
+    var blink_speed = 500;
+    var t = setInterval(function () {
+        var ele = document.getElementById('topUser');
+        ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden'); }, blink_speed
+    );
 </script>
 </html>
 

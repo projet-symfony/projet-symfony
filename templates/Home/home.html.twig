@@ -18,44 +18,41 @@ Nextipster
 
 {%  block body %}
 
-    <!-- Slideshow container -->
     <div class="slideshow-container">
 
-        <!-- Full-width images with number and caption text -->
         <div class="mySlides fade">
-            <img src="images/30d4b.jpg" style="width:70%; height: 200px; margin-left: 40px; margin-top: 10px;">
+            <img src="images/30d4b.jpg" style="width:70%; height: 200px; margin-left: 50px; margin-top: 10px;">
             <div class="text"> <a href="#"> ENTRE LYON ET SON PUBLIC, UNE FRACTURE OUVERTE</a></div>
         </div>
 
         <div class="mySlides fade">
-            <img src="images/b58a6.jpg" style="width:70%; height: 200px; margin-left: 40px; margin-top: 10px;">
+            <img src="images/b58a6.jpg" style="width:70%; height: 200px; margin-left: 50px; margin-top: 10px;">
             <div class="text"><a href="#"> LES VERRES ARRACHENT UN POINT </a></div>
         </div>
 
         <div class="mySlides fade">
-            <img src="images/fc834.jpg" style="width:70%; height: 200px; margin-left: 40px; margin-top: 10px;">
-            <div class="text"><a href="#" class="text"> MERCADAL : " TOUJOURS EN VIE "</a>a</div>
+            <img src="images/fc834.jpg" style="width:70%; height: 200px; margin-left: 50px; margin-top: 10px;">
+            <div class="text"><a href="#" class="text"> MERCADAL : " TOUJOURS EN VIE "</a></div>
         </div>
 
     </div>
+    <div style="margin-top: 50px;">
+           <h2 style=" color: #37474F;"> Matchs de la semaine </h2>
+            <hr class="separator"> <br />
 
+            <ul class="ulMatch">
+                <li class="headerMatch"> Champions League </li>
+                <li class="match"><a href= "{{ path('Analyse') }}"> <span class="time">18:55</span> <span class="team">Paris - Réal</span>  <span class="nbAvis"> 5 Avis </span> </a></li>
+                <li class="match"><a href= "{{ path('Analyse') }}">  <span class="time">14:00</span>  <span class="team"> Barça - Juventus </span>  </a> </li>
+            </ul>
 
-      <!--  <h2> Matchs de la semaine </h2>
-        <hr class="separator"> <br />
+            <ul class="ulMatch">
+                <li class="headerMatch"> Ligue 1 </li>
+                <li class="match"><a> <span class="time">18:55</span> <span class="team">Paris - Réal</span>  <span class="nbAvis"> 5 Avis </span> </a></li>
+                <li class="match"><a>  <span class="time">14:00</span>  <span class="team"> Barça - Juventus </span>  </a> </li>
+            </ul>
 
-        <ul class="ulMatch">
-            <li class="headerMatch"> Champions League </li>
-            <li class="match"><a href= "{{ path('Analyse') }}"> <span class="time">18:55</span> <span class="team">Paris - Réal</span>  <span class="nbAvis"> 5 Avis </span> </a></li>
-            <li class="match"><a href= "{{ path('Analyse') }}">  <span class="time">14:00</span>  <span class="team"> Barça - Juventus </span>  </a> </li>
-        </ul>
-
-        <ul class="ulMatch">
-            <li class="headerMatch"> Ligue 1 </li>
-            <li class="match"><a> <span class="time">18:55</span> <span class="team">Paris - Réal</span>  <span class="nbAvis"> 5 Avis </span> </a></li>
-            <li class="match"><a>  <span class="time">14:00</span>  <span class="team"> Barça - Juventus </span>  </a> </li>
-        </ul>
--->
-
+    </div>
     <script>
         var slideIndex = 0;
         showSlides();
