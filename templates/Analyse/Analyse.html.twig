@@ -10,13 +10,15 @@
 {% endblock %}
 
     {%  block body %}
+        {% set test = 0 %}
         <h2> ANALYSE DE MATCH</h2>
         <hr class="separator">
 
         <ul>
             <li>
-                <p class="detailMatch"> 17:30 à Parc des princes</p>
-                <p class="teamMatch"> Paris Saint Germains - Olympique Lyonnais </p>
+
+                <p class="detailMatch"> {{ jeu.heure|date('H:i:s') }} {{ jeu.date|date('Y-m-d') }} à {{ jeu.Lieu }}</p>
+                <p class="teamMatch"> {{ jeu.equipes.first().NomEquipe }} -- {{ jeu.equipes.last().NomEquipe }} </p>
                 <div class="result">
                     <button class="activeButton"> 1 </button>
                     <button class="otherButton" disabled> N </button>
@@ -28,8 +30,8 @@
                     <span class="otherCote">3.40</span>
                     <span class="otherCote">3.75</span> </div>
             </li>
-        </ul>
 
+        </ul>
 
 
 
@@ -37,107 +39,98 @@
             <img src="" alt="stade">
         </div>
         <h3> Classement Actuel Des Clubs </h3>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th> Numéros </th>
-                <th> Clubs </th>
-                <th> Points </th>
-                <th> Joués </th>
-                <th> Gagnés </th>²
-                <th> Nuls </th>
-                <th> Perdus </th>
+        <div class="container mt-4">
 
-            </tr>
-            </thead>
+            <table class="table table-striped">
+                <thead>
+                <tr class="entete">
+                    <th> Clubs </th>
+                    <th> Points </th>
+                    <th> Joués </th>
+                    <th> Gagnés </th>²
+                    <th> Perdus </th>
 
-        </table>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                    <td> {{ jeu.equipes.first().NomEquipe }} </td>
+                    <td> {{jeu.equipes.first().points }} </td>
+                    <td> {{ jeu.equipes.first().nbMatchJoue }} </td>
+                    <td> {{jeu.equipes.first().nbMatchGagne}} </td>
+                    <td> {{ jeu.equipes.first().nbMatchPerdu}} </td>
+                </tr>
+                <tr>
+
+                    <td> {{ jeu.equipes.last().NomEquipe }} </td>
+                    <td> {{ jeu.equipes.last().points }} </td>
+                    <td> {{ jeu.equipes.last().nbMatchJoue }} </td>
+                    <td> {{jeu.equipes.last().nbMatchGagne}} </td>
+                    <td> {{jeu.equipes.last().nbMatchPerdu}} </td>
+                </tr>
+
+
+                </tbody>
+            </table>
         </div>
         <h3> Forme </h3>
         <div class="Forme">
             <table id="team1">
-                <tr>
-                    <th>team1</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
+                <thead>
+                <tr class="entete">
+                    <th> Club </th>
+                    <th> score</th>
+                    <th> club</th>
 
                 </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>0</td>
-                    <td>pt</td>
+                </thead>
 
-                </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>0</td>
-                    <td>pt</td>
+                <tbody>
+                {% for e in jeu.equipes.first().getJeux()%}
+                    {% if e.id != jeu.id %}
 
-                </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>0</td>
-                    <td>pt</td>
+                        {% if test <5 %}
+                            <tr>
+                                <td> {{ e.equipes.first().NomEquipe }} </td>
+                                <td> {{ e.score}} </td>
+                                <td> {{ e.equipes.last().NomEquipe }} </td>
+                            </tr>
+                        {% endif %}
+                        {%  set test = test+1 %}
+                    {% endif %}
+                {% endfor %}
 
-                </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>0</td>
-                    <td>pt</td>
+                </tbody>
 
-                </tr>
             </table>
             <table id="team2">
-                <tr>
-                    <th>team2</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
+                <thead>
+                <tr class="entete">
+                    <th> Club </th>
+                    <th> score</th>
+                    <th> club</th>
 
                 </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
+                </thead>
 
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
+                <tbody>
+                {% set test = 0 %}
+                {% for e in jeu.equipes.last().getJeux()%}
+                    {% if e.id != jeu.id %}
+                        {% if test <5 %}
+                            <tr>
+                                <td> {{ e.equipes.first().NomEquipe }} </td>
+                                <td> {{ e.score}} </td>
+                                <td> {{ e.equipes.last().NomEquipe }} </td>
+                            </tr>
+                        {% endif %}
+                        {% set test = test + 1 %}
+                    {% endif %}
+                {% endfor %}
+                </tbody>
 
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
 
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
             </table>
 
 
@@ -145,111 +138,68 @@
         <h3> Face à Face </h3>
         <div class="Face">
             <table id="face">
-                <tr>
-                    <th>team2</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
-                    <th>pt</th>
+                <tbody>
+                {% set test = 0 %}
+                {% for e in jeu.equipes.first().getJeux()%}
+                    {% if (e.equipes.first().id == jeu.equipes.last().id and e.equipes.last().id == jeu.equipes.first().id) or (e.equipes.first().id == jeu.equipes.first().id and e.equipes.last().id == jeu.equipes.last().id)%}
+                        {% if test <5 %}
+                            <tr>
+                                <td> {{ e.equipes.first().NomEquipe }} </td>
+                                <td> {{ e.score}} </td>
+                                <td> {{ e.equipes.last().NomEquipe }} </td>
+                            </tr>
+                        {% endif %}
+                        {% set test = test+1 %}
+                    {% endif %}
+                {% endfor %}
+                </tbody>
 
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-                    <td>pt</td>
-
-                </tr>
             </table>
 
         </div>
         <h3> Statique generale </h3>
         <div class="Statistique">
-            <table id="team1"><tr>
-                    <th>team1</th>
-                    <th>pt</th>
-
-
-                </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>pt</td>
-
+            <table id="team1">
+                <thead>
+                <tr class="entete">
+                    <th> Club </th>
+                    <th> type</th>
+                    <th>values</th>
 
                 </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>pt</td>
-
-
-                </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>pt</td>
-
-
-                </tr>
-                <tr>
-                    <td>team1</td>
-                    <td>pt</td>
-
-
-                </tr>
+                </thead>
+                <tbody>
+                {% for stat in jeu.stats %}
+                    {% if jeu.equipes.first().id == stat.getEquipeId() %}
+                        <tr>
+                            <td>{{ stat.getEquipe().NomEquipe}}</td>
+                            <td>{{ stat.getType().name }}</td>
+                            <td>{{ stat.value }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
             </table>
             <table id="team2">
-                <tr>
-                    <th>team2</th>
-                    <th>pt</th>
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-
+                <thead>
+                <tr class="entete">
+                    <th> Club </th>
+                    <th> type</th>
+                    <th>values</th>
 
                 </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-
-
-                </tr>
-                <tr>
-                    <td>team2</td>
-                    <td>pt</td>
-
-
-                </tr>
+                </thead>
+                <tbody>
+                {% for stat in jeu.stats %}
+                    {% if jeu.equipes.last().id == stat.getEquipeId() %}
+                        <tr>
+                            <td>{{ stat.getEquipe().NomEquipe}}</td>
+                            <td>{{ stat.getType().name }}</td>
+                            <td>{{ stat.value }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
             </table>
         </div>
 

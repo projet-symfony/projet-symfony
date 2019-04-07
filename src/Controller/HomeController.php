@@ -11,7 +11,6 @@ use App\Entity\Utilisateur;
 use App\Form\UserForm;
 use App\Repository\JeuRepository;
 use App\Repository\UtilisateurRepository;
-use App\Repository\PronostiqueurRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,19 +19,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
 
-    private $repository ;
+    private $repjeu ;
     private $repository2;
     private $em;
-    public function __construct(JeuRepository $repository, UtilisateurRepository $repository2, ObjectManager $em)
+    public function __construct(JeuRepository $repjeu, UtilisateurRepository $repository2, ObjectManager $em)
     {
-        $this->repository = $repository;
+        $this->repjeu = $repjeu;
         $this->repository2 = $repository2;
         $this->em = $em;
     }
     /**
      * @Route("/")
      */
-    public function homepage(ObjectManager $om, Request $request, UtilisateurRepository $repository){
+    public function homepage(ObjectManager $om, Request $request, UtilisateurRepository $repository, JeuRepository $repjeu){
         $user = new Utilisateur();
         $form   = $this->createForm(UserForm::class, $user);
         $form->handleRequest($request);
@@ -51,8 +50,9 @@ class HomeController extends AbstractController
         $listUser = $repository->findAll();
         foreach($listUser as $us){
             if ($form->get('Login')->getData()==$us->getLogin() && $form->get('Password')->getData()==$us->getPassword()){
+                $jeu = $this->repjeu->printAll();
                 return $this->render('home/homeConnected.html.twig',[
-                    'pronostiqueurs5' => $pronostiqueurs5
+                    'pronostiqueurs5' => $pronostiqueurs5,'jeu'=>$jeu
                 ]);
             }
 
@@ -66,12 +66,11 @@ class HomeController extends AbstractController
         ;
         $listprono = $repository2->printAll();
         */
-
+        $jeu = $this->repjeu->printAll();
         return $this->render('home/home.html.twig', [
-            'pronostiqueurs5' => $pronostiqueurs5,
-            'form'=>$form->createView()
+            'form' => $form->createView(),
+            'pronostiqueurs5' => $pronostiqueurs5, 'jeu' => $jeu]);
 
-        ]);
 
     }
 
@@ -79,7 +78,7 @@ class HomeController extends AbstractController
     /**
      * @Route("/register")
      */
-    public function register(ObjectManager $om, Request $request, UtilisateurRepository $repository)
+    public function register(ObjectManager $om, Request $request, UtilisateurRepository $repository,JeuRepository $repjeu)
     {
         $repository2 = $this
             ->getDoctrine()
@@ -98,17 +97,16 @@ class HomeController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
+            $jeu = $this->repjeu->printAll();
             return $this->render('home/home.html.twig', [
                 'form' => $form->createView(),
-                'pronostiqueurs5' => $pronostiqueurs5,
-            ]);
+                'pronostiqueurs5' => $pronostiqueurs5, 'jeu' => $jeu]);
 
         }
-
+        $jeu = $this->repjeu->printAll();
         return $this->render('home/homeRegister.html.twig', [
             'pronostiqueurs5' => $pronostiqueurs5,
-            'form' => $form->createView()
+            'form' => $form->createView(), 'jeu' => $jeu
         ]);
     }
 
@@ -124,7 +122,7 @@ class HomeController extends AbstractController
 
         $pronostiqueurs5 = $repository2->printJustFive();
 
-        $jeu = $this->repository->printAll();
+        $jeu = $this->repjeu->printAll();
         return $this->render('home/dayprono.html.twig', [
             'pronostiqueurs5' => $pronostiqueurs5,
             'jeu' => $jeu]);

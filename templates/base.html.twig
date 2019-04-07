@@ -58,12 +58,15 @@
         </div>
 
     {% endblock %}
-<footer>
-    <a href="#">Qui sommes nous ?</a>
-    <a href="#">Nous contacter</a>
-    <a href="#">Plan du site</a>
-    <a href="#">Mentions légales</a>
-    <a href="#">FAQ</a>
+
+    <footer>
+        <p>NextTipster</p>
+        <a href="{{ path('info') }}" >Qui sommes nous ?</a>
+        <a href="{{ path('contacte') }}">Nous contacter</a>
+        <a href="{{ path('plan') }}">Plan du site</a>
+        <a href="{{ path('mention') }}">Mentions légales</a>
+        <a href="{{ path('FAQ') }}">FAQ </a>
+    </footer>
 </footer>
 
 

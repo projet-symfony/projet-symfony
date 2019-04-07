@@ -42,28 +42,25 @@ class Jeu
     private $score;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Equipe", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Equipe" ,mappedBy="jeux")
      */
-    private $idEquipe1;
+    private $equipes;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Equipe", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $idEquipe2;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Utilisateur", mappedBy="jeux")
      */
     private $Utilisateurs;
-
-
-
-
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Stats",mappedBy="jeu")
+     */
+    private $stats;
     public function __construct()
     {
         $this-> Utilisateurs = new ArrayCollection();
+        $this-> equipes = new ArrayCollection();
+        $this-> stats = new ArrayCollection();
+
     }
 
 
@@ -122,33 +119,14 @@ class Jeu
         return $this;
     }
 
-    public function getIdEquipe1(): ?Equipe
-    {
-        return $this->idEquipe1;
-    }
-
-    public function setIdEquipe1(Equipe $idEquipe1): self
-    {
-        $this->idEquipe1 = $idEquipe1;
-
-        return $this;
-    }
-
-    public function getIdEquipe2(): ?Equipe
-    {
-        return $this->idEquipe2;
-    }
-
-    public function setIdEquipe2(Equipe $idEquipe2): self
-    {
-        $this->idEquipe2 = $idEquipe2;
-
-        return $this;
-    }
 
     public function __toString()
     {
         return $this->Lieu;
+    }
+    public function getEquipes(): Collection
+    {
+        return $this->equipes;
     }
 
     /**
@@ -177,6 +155,14 @@ class Jeu
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStats()
+    {
+        return $this->stats;
     }
 
 }
