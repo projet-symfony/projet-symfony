@@ -43,7 +43,7 @@ Nextipster
             <ul class="ulMatch">
                 <li class="headerMatch"> Champions League </li>
                 {% for i in 0..match|length-2 %}
-                <li class="match"><a href= "{{ path('Analyse') }}"> <span class="time">18:55</span> <span class="team">{{ match[i].NomEquipe }} -  {{  match[i+1].NomEquipe }}</span> </a></li>
+                <li class="match"><a href= " {{ path('Analyse',{'equipe1':match[i].id , 'equipe2':match[i+1].id})  }}"> <span class="time">18:55</span> <span class="team">{{ match[i].NomEquipe }} -  {{  match[i+1].NomEquipe }}</span> </a></li>
                 {% endfor %}
             </ul>
 

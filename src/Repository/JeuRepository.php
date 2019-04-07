@@ -85,7 +85,7 @@ class JeuRepository extends ServiceEntityRepository
         $query= $entityManager->createQuery(
 
             ' 
-                    select distinct e.NomEquipe,j.heure
+                    select distinct e.NomEquipe, e.id
                     from App\Entity\Equipe e, App\Entity\Jeu j
                     where j.idEquipe1=e.id
                     OR j.idEquipe2=e.id'
