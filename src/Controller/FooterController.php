@@ -19,13 +19,16 @@ class FooterController extends AbstractController
 {
 
     private $repository ;
-    private $em;
+    private $em ;
+
 
     /* public function __construct(contacteRepository $repository, ObjectManager $em)
      {
          $this->repository = $repository;
           $this->em = $em;
      }*/
+
+
     /**
      * @Route("/footer/info" ,name="info")
      */
@@ -41,23 +44,28 @@ class FooterController extends AbstractController
     /**
      * @Route("/footer/footer", name="footer")
      */
+
+
     /*public function  index(Request $request){
-    $name = $request->get("nom");
-      $message = $request->get("msg");
-      $email = $request->get("mail");
-     $pseudoForum = $request->get("pseudo");
-      $sujet = $request->get("sujet");
-      $contacte=new Contacte();
-      $contacte->setEmail($email)
-         ->setMessage($message)
-        ->setName($name)
-      ->setPseudoForum($pseudoForum)
-       ->setSujet($sujet);
-    $this->em->persist($contacte);
-     $this->em->flush();
-    return $this->render('footer/message.html.twig',["name"=>$name,
+        $name = $request->get("nom");
+        $message = $request->get("msg");
+
+        $email = $request->get("mail");
+        $pseudoForum = $request->get("pseudo");
+        $sujet = $request->get("sujet");
+        $contacte=new Contacte();
+        $contacte->setEmail($email)
+          ->setMessage($message)
+          ->setName($name)
+          ->setPseudoForum($pseudoForum)
+          ->setSujet($sujet);
+        $this->em->persist($contacte);
+        $this->em->flush();
+        return $this->render('footer/message.html.twig',["name"=>$name,
         "message"=>"ttttttttt"]);
     }*/
+
+
     /**
      * @Route("/footer/plan" ,name="plan")
      */

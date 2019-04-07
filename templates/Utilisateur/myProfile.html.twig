@@ -5,16 +5,53 @@
 {% endblock %}
 
 {%  block body %}
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <br><br>
     <div class="container">
-        <table >
+        <table>
             <tr>
-                <td>{{ util.Nom }}</td>
+                <td>
+                    {{ util.Nom }}
+                </td>
+                <td>
+                    Nom
+                </td>
             </tr>
             <tr>
-                <td> {{ util.Prenom }}</td>
+                <td>
+                    Prénom
+                </td>
+                <td>
+                    {{ util.Prenom }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nombre de pronostique
+                </td>
+                <td>
+                    {{ util.nbrePronostiques }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Taux de réussite
+                </td>
+                <td>
+                    {{ util.tauxReussite }} %
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Nombre de réussite
+                </td>
+                <td>
+                    {{ util.nbreReussite }}
+                </td>
             </tr>
         </table>
-
-
     </div>
 {% endblock %}

@@ -1,77 +1,83 @@
-<!Dctml>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" type="text/css" href="{{ asset('CSS/header.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('CSS/left.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('CSS/footer.css') }}">
-         {% block stylesheets %}{% endblock %}
-    </head>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/header.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/left.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/footer.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('CSS/home.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
 
-    <body>
+<body>
 
-    <header>
-        <div id="banner">
-            <img src="banner.jpg" alt="banniere">
+<header>
+    <div id="banner">
+        <img src="images/banner.jpg" alt="banniere" width="100%" height="250px">
+        <p id="baniere">Pronostiquez pour vos meilleurs équipes</p>
+    </div>
+
+    <ul class="ulMenu">
+        <li class="menu"> <a href="/" id="first"> ACCEUIL </a></li>
+        <li class="menu"> <a href="dayprono">PRONOSTIC DU JOUR </a> </li>
+        <li class="dropdown"> <a> CLASSEMENT </a>
+            <div class="dropdown-content">
+                <a href="{{ path('classementpronostiqueur') }}">Pronostiqueur</a>
+                <a href="{{ path('classementclub') }}">Equipes</a>
+            </div>
+        </li>
+        <li class="menu"> <a href="{{ path('historique_index') }}"> HISTORIQUE </a></li>
+    </ul>
+
+</header>
+
+<div class = "leftLogin">
+    <h4> {% block titleForm %} {%  endblock %} </h4>
+    {% block form %} {% endblock %}
+
+    {%  block register %}{% endblock %}
+
+    <h4 id="topUser"> Les top 5 utilisateurs</h4>
+    {%  set n = 0  %}
+
+    <ul class="ulFirstUser">
+        {%  for p in pronostiqueurs5 %}
+        <li id="user">
+            {%  set n = n+1 %}
+           <span id="num"> {{ n }}</span> <a href="#" style="text-decoration: none; color:#37474F;"> <span id="infoUser"> {{ p.Prenom~" "~p.Nom }}</span> </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+
+    {% block body %}
+        <div class="body">
         </div>
 
-        <ul class="ulMenu">
-            <li class="menu"> <a href="/" id="first"> ACCEUIL </a></li>
-            <li class="menu"> <a href="dayprono">PRONOSTIC DU JOUR </a> </li>
-            <li class="dropdown"> <a> CLASSEMENT </a>
-                <div class="dropdown-content">
-                    <a href="{{ path('classementpronostiqueur') }}">Pronostiqueur</a>
-                    <a href="{{ path('classementclub') }}">Equipes</a>
-                </div>
-            </li>
-            <li class="menu"> <a href="{{ path('historique_index') }}"> HISTORIQUE </a></li>
-        </ul>
-
-    </header>
-
-    <div class = "leftLogin">
-
-        <h4> {% block titleForm %} {%  endblock %} </h4>
-        {% block form %} {% endblock %}
-
-        {%  block register %}{% endblock %}
-
-    <br /> <br />
-        <h4> Top User </h4>
-
-        {% set i = 0 %}
-        <ul class="ulFirstUser">
-            {% for pr in pronostiqueurs5 %}
-                {% set i = i+1 %}
-                <li id="FirstUser">
-                    <span id="nbUser"> {{ i }}</span>
-                    <img alt="photoUser">
-                    <span id="nameUser"> {{ pr.Prenom~" "~pr.Nom }} </span>
-                </li>
-
-            {% endfor %}
-        </ul>
+    {% endblock %}
+<footer>
+    <a href="#">Qui sommes nous ?</a>
+    <a href="#">Nous contacter</a>
+    <a href="#">Plan du site</a>
+    <a href="#">Mentions légales</a>
+    <a href="#">FAQ</a>
+</footer>
 
 
 
-    </div>
 
-    <div class="body">
-        {% block body %}{% endblock %}
-
-    </div>
+</body>
 
 
-    <footer>
-        <p>NextTipster</p>
-        <a href="{{ path('info') }}" >Qui sommes nous ?</a>
-        <a href="{{ path('contacte') }}">Nous contacter</a>
-        <a href="{{ path('plan') }}">Plan du site</a>
-        <a href="{{ path('mention') }}">Mentions légales</a>
-
-    </footer>
-
-    </body>
-
+<script>
+    var blink_speed = 500;
+    var t = setInterval(function () {
+        var ele = document.getElementById('topUser');
+        ele.style.visibility = (ele.style.visibility == 'hidden' ? '' : 'hidden'); }, blink_speed
+    );
+</script>
 </html>
 

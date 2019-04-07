@@ -36,8 +36,8 @@ class UtilisateurRepository extends ServiceEntityRepository
             ->orderBy('u.tauxReussite' , 'DESC')
             ->setMaxResults(5)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
+
     }
 
     public function findByPercentage(){
